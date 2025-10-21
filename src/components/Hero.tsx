@@ -401,7 +401,7 @@ const AnimatedMenuList: React.FC<AnimatedMenuListProps> = ({
   };
 
   return (
-    <div className="relative w-72">
+    <div className="relative w-56 md:w-72">
       <style>{`
         @keyframes menuSlideIn {
           from {
@@ -421,7 +421,7 @@ const AnimatedMenuList: React.FC<AnimatedMenuListProps> = ({
 
       <div
         ref={listRef}
-        className="max-h-96 overflow-y-auto p-4 menu-list-animate [&::-webkit-scrollbar]:w-[8px] [&::-webkit-scrollbar-track]:bg-black/50 [&::-webkit-scrollbar-thumb]:bg-lime-400/50 [&::-webkit-scrollbar-thumb]:rounded-[4px]"
+        className="max-h-96 overflow-y-auto p-3 md:p-4 menu-list-animate [&::-webkit-scrollbar]:w-[8px] [&::-webkit-scrollbar-track]:bg-black/50 [&::-webkit-scrollbar-thumb]:bg-lime-400/50 [&::-webkit-scrollbar-thumb]:rounded-[4px]"
         onScroll={handleScroll}
         style={{
           scrollbarWidth: 'thin',
@@ -429,7 +429,7 @@ const AnimatedMenuList: React.FC<AnimatedMenuListProps> = ({
         }}
       >
         {items.map((item, index) => (
-          <div key={index} className="mb-3">
+          <div key={index} className="mb-2 md:mb-3">
             <AnimatedItem
               delay={index * 50}
               index={index}
@@ -440,13 +440,13 @@ const AnimatedMenuList: React.FC<AnimatedMenuListProps> = ({
               }}
             >
               <div
-                className={`p-3 rounded-lg transition-all duration-300 cursor-pointer ${
+                className={`p-2 md:p-3 rounded-lg transition-all duration-300 cursor-pointer ${
                   selectedIndex === index
                     ? 'bg-lime-400 text-black shadow-lg shadow-lime-400/50'
                     : 'bg-black/60 text-white hover:bg-black/80'
                 }`}
               >
-                <p className="text-sm font-bold uppercase tracking-wider m-0" style={{ fontFamily: 'Anton, sans-serif' }}>
+                <p className="text-xs md:text-sm font-bold uppercase tracking-wider m-0" style={{ fontFamily: 'Anton, sans-serif' }}>
                   {item}
                 </p>
               </div>
@@ -489,7 +489,12 @@ const HeroSection: React.FC = () => {
   const menuRef = useRef<HTMLDivElement>(null);
   const [rotatingTextIndex, setRotatingTextIndex] = useState(0);
   const [selectedMenuIndex, setSelectedMenuIndex] = useState<number>(-1);
-  const rotatingTexts = ['HR Solutions', 'IT Services', 'Designing'];
+  
+  const rotatingTexts = [
+    { text: 'HR Solutions', color: 'text-cyan-400' },
+    { text: 'IT Services', color: 'text-purple-400' },
+    { text: 'Designing', color: 'text-pink-400' }
+  ];
 
   const menuItems = [
     'HOME',
@@ -655,7 +660,7 @@ const HeroSection: React.FC = () => {
       `}</style>
 
       {/* Fixed Animated Menu */}
-      <div ref={menuRef} className="fixed top-6 right-6 z-50">
+      <div ref={menuRef} className="fixed top-4 md:top-6 right-4 md:right-6 z-50">
         {/* Menu List - Animated Dropdown */}
         {isMenuOpen && (
           <div className="mb-4">
@@ -671,16 +676,16 @@ const HeroSection: React.FC = () => {
         {/* Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="menu-button w-12 h-12 bg-lime-400 text-black rounded-full flex items-center justify-center hover:bg-lime-300 transition-all duration-300 shadow-lg"
+          className="menu-button w-10 h-10 md:w-12 md:h-12 bg-lime-400 text-black rounded-full flex items-center justify-center hover:bg-lime-300 transition-all duration-300 shadow-lg flex-shrink-0"
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? <X size={20} className="md:w-6 md:h-6" /> : <Menu size={20} className="md:w-6 md:h-6" />}
         </button>
       </div>
 
       {/* Hero Section */}
       <div
         ref={heroRef}
-        className="relative w-full h-screen bg-black overflow-hidden"
+        className="relative w-full min-h-screen md:h-screen bg-black overflow-hidden flex flex-col justify-center"
       >
         {/* Video Background */}
         <video
@@ -715,86 +720,76 @@ const HeroSection: React.FC = () => {
               "radial-gradient(ellipse at 50% 60%, rgba(16, 185, 129, 0.3) 0%, rgba(6, 78, 59, 0.2) 30%, rgba(0, 0, 0, 0.6) 70%)",
           }}
         >
-          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/2 left-1/4 w-32 md:w-96 h-32 md:h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
           <div
-            className="absolute top-1/3 right-1/4 w-80 h-80 bg-teal-600/10 rounded-full blur-3xl"
+            className="absolute top-1/3 right-1/4 w-32 md:w-80 h-32 md:h-80 bg-teal-600/10 rounded-full blur-3xl"
             style={{ animationDelay: "1s" }}
           ></div>
         </div>
 
-        {/* Yellow circle decoration */}
+        {/* Yellow circle decoration - Hidden on mobile */}
         <div
-          className="absolute bottom-32 right-40 w-16 h-16 bg-lime-400 rounded-full z-10 animate-bounce"
+          className="absolute bottom-32 right-20 md:right-40 w-12 md:w-16 h-12 md:h-16 bg-lime-400 rounded-full z-10 animate-bounce hidden sm:block"
           style={{ animationDuration: "3s" }}
         ></div>
 
         {/* Navigation */}
-        <nav className="relative z-20 flex items-center justify-between px-8 py-6 text-white">
+        <nav className="relative z-20 flex items-center justify-between px-4 md:px-8 py-4 md:py-6 text-white">
           <div className="flex items-center">
-            <img src={logoheader} alt="Srays Logo" className="h-10" />
+            <img src={logoheader} alt="Srays Logo" className="h-8 md:h-10" />
           </div>
-
-          {/* <div className="flex items-center gap-8 text-sm">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-lime-400 rounded-full"></span>
-              <span>INDIA, HONGKONG</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-lime-400 rounded-full"></span>
-              <span>HELLO@srayssolutions.com</span>
-            </div>
-          </div> */}
         </nav>
 
-        {/* Center Navigation Info */}
-        <div className="absolute inset-x-0 top-6 flex items-center justify-center z-15">
-          <div className="flex items-center gap-12 text-sm text-white">
+        {/* Center Navigation Info - Responsive */}
+        <div className="absolute inset-x-0 top-14 md:top-6 flex items-center justify-center z-15">
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12 text-xs md:text-sm text-white px-4">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-lime-400 rounded-full"></span>
-              <span>INDIA, HONGKONG</span>
+              <span className="w-2 h-2 bg-lime-400 rounded-full flex-shrink-0"></span>
+              <span className="whitespace-nowrap">INDIA, HONGKONG</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-lime-400 rounded-full"></span>
-              <span>HELLO@srayssolutions.com</span>
+              <span className="w-2 h-2 bg-lime-400 rounded-full flex-shrink-0"></span>
+              <span className="whitespace-nowrap">HELLO@srayssolutions.com</span>
             </div>
           </div>
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-8 -mt-20">
+        <div className="relative z-10 flex flex-col items-center justify-center flex-1 text-white px-4 md:px-8 py-16 md:-mt-20">
           <div
             ref={welcomeRef}
-            className="text-left w-full max-w-6xl mb-8 transition-all duration-700 ease-out"
+            className="text-left w-full max-w-6xl mb-6 md:mb-8 transition-all duration-700 ease-out"
             style={{ opacity: 0, transform: "translateY(20px)" }}
           ></div>
 
-          <div className="text-center max-w-5xl">
+          <div className="text-center max-w-4xl md:max-w-5xl">
             <div
               ref={subtitleRef}
-              className="text-4xl md:text-5xl lg:text-6xl font-light mb-6 transition-all duration-700 ease-out"
+              className="text-xl md:text-5xl lg:text-6xl font-light mb-4 md:mb-6 transition-all duration-700 ease-out"
               style={{
                 opacity: 0,
                 transform: "translateY(30px)",
                 fontFamily: "Sacramento, cursive",
               }}
             >
-              <span className="text-lime-300">
+              <span className="text-lime-300 block md:inline">
                 Design an optimal business model to reach Your{" "}
-                <span
-                  className="inline-block transition-all duration-500 ease-in-out"
-                  key={rotatingTextIndex}
-                  style={{
-                    animation: "fadeSlideIn 0.5s ease-in-out",
-                  }}
-                >
-                  {rotatingTexts[rotatingTextIndex]}
-                </span>
+              </span>
+              <span
+                className={`inline-block transition-all duration-500 ease-in-out ${rotatingTexts[rotatingTextIndex].color}`}
+                key={rotatingTextIndex}
+                style={{
+                  animation: "fadeSlideIn 0.5s ease-in-out",
+                  fontFamily: "Sacramento, cursive",
+                }}
+              >
+                {rotatingTexts[rotatingTextIndex].text}
               </span>
             </div>
 
             <h1
               ref={titleRef}
-              className="text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-tight mb-8 transition-all duration-1000 ease-out"
+              className="text-2xl md:text-6xl lg:text-7xl font-black uppercase leading-tight mb-6 md:mb-8 transition-all duration-1000 ease-out px-2 md:px-0"
               style={{
                 opacity: 0,
                 transform: "translateY(40px)",
@@ -806,17 +801,6 @@ const HeroSection: React.FC = () => {
               also called business model innovation.
             </h1>
 
-            {/* <button
-              ref={ctaRef}
-              className="bg-lime-400 text-black px-12 py-4 rounded-full text-lg font-bold uppercase hover:bg-lime-300 transition-all duration-300 hover:scale-105"
-              style={{ 
-                opacity: 0, 
-                transform: 'translateY(20px)',
-                fontFamily: 'Anton, sans-serif'
-              }}
-            >
-              Learn More
-            </button> */}
             <button
               ref={ctaRef}
               onClick={() => {
@@ -825,7 +809,7 @@ const HeroSection: React.FC = () => {
                   homeSection.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="bg-lime-400 text-black px-12 py-4 rounded-full text-lg font-bold uppercase hover:bg-lime-300 transition-all duration-300 hover:scale-105"
+              className="bg-lime-400 text-black px-8 md:px-12 py-3 md:py-4 rounded-full text-sm md:text-lg font-bold uppercase hover:bg-lime-300 transition-all duration-300 hover:scale-105"
               style={{
                 opacity: 0,
                 transform: 'translateY(20px)',
@@ -837,7 +821,7 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-32">
+        <div className="absolute bottom-0 left-0 right-0 h-16 md:h-32">
           <svg
             viewBox="0 0 1200 100"
             className="w-full h-full"

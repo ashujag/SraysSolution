@@ -3,7 +3,6 @@ import { useState } from 'react';
 const ServiceMenu = () => {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [openService, setOpenService] = useState<number | null>(null);
-
   const services = [
     { 
       id: 1, 
@@ -75,31 +74,31 @@ const ServiceMenu = () => {
 
   return (
     <>
-      <div id="services" className="min-h-screen bg-white flex items-center justify-center p-8">
+      <div id="services" className="min-h-screen bg-white flex items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl">
-          <div className="mb-12">
-            <h2 className="text-xl font-bold tracking-wider">(SERVICE)</h2>
+          <div className="mb-8 md:mb-12">
+            <h2 className="text-base md:text-xl font-bold tracking-wider">BUSINESS SERVICE</h2>
           </div>
 
           <div className="space-y-0">
             {services.map((service) => (
               <div
                 key={service.id}
-                className={`relative flex items-center justify-between border-b-2 border-black py-8 transition-all duration-300 ${
+                className={`relative flex flex-col md:flex-row items-start md:items-center justify-between border-b-2 border-black py-6 md:py-8 transition-all duration-300 ${
                   hoveredItem === service.id ? 'bg-lime-300' : 'bg-white'
                 }`}
                 onMouseEnter={() => setHoveredItem(service.id)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
-                <div className="flex items-center gap-16 flex-1">
-                  <span className="text-xl font-bold ml-8">{service.number}</span>
-                  <h3 className="text-7xl font-black tracking-tight">{service.title}</h3>
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-16 flex-1 w-full">
+                  <span className="text-lg md:text-xl font-bold flex-shrink-0">{service.number}</span>
+                  <h3 className="text-2xl md:text-7xl font-black tracking-tight break-words md:whitespace-nowrap">{service.title}</h3>
                 </div>
 
-                {/* Image container - shows on hover for all items */}
+                {/* Image container - shows on hover for desktop, clickable on mobile */}
                 {hoveredItem === service.id && (
-                  <div className="absolute left-1/2 top-1/2 -translate-y-1/2 z-10 animate-in fade-in zoom-in-95 duration-300">
-                    <div className="w-[500px] h-[330px] rounded-lg shadow-2xl overflow-hidden">
+                  <div className="absolute left-1/2 top-1/2 -translate-y-1/2 z-10 animate-in fade-in zoom-in-95 duration-300 hidden md:block">
+                    <div className="w-[300px] lg:w-[500px] h-[200px] lg:h-[330px] rounded-lg shadow-2xl overflow-hidden">
                       <img 
                         src={service.image}
                         alt={service.title}
@@ -111,15 +110,15 @@ const ServiceMenu = () => {
 
                 {/* Arrow - clickable */}
                 <div 
-                  className="mr-8 cursor-pointer"
+                  className="mt-4 md:mt-0 md:mr-8 cursor-pointer flex-shrink-0"
                   onClick={() => handleArrowClick(service.id)}
                 >
                   <svg
-                    width="60"
-                    height="60"
+                    width="40"
+                    height="40"
                     viewBox="0 0 60 60"
                     fill="none"
-                    className={`transition-transform duration-300 ${
+                    className={`transition-transform duration-300 md:w-[60px] md:h-[60px] ${
                       hoveredItem === service.id ? 'translate-x-2' : ''
                     }`}
                   >
@@ -147,10 +146,10 @@ const ServiceMenu = () => {
         <div 
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(/src/assets/6847119f22b5391772dbf625_684efaff0f6e64c09d96d807_freepik__animate-this-with-8k-loop__54302-poster-00001.jpg)',
+            backgroundImage: 'url(https://cdn.prod.website-files.com/6847119f22b5391772dbf625%2F684efaff0f6e64c09d96d807_freepik__animate-this-with-8k-loop__54302-poster-00001.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            filter: 'brightness(0.4)'
+            filter: 'brightness(0.5)'
           }}
         ></div>
         
@@ -158,21 +157,22 @@ const ServiceMenu = () => {
         <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&display=swap" rel="stylesheet" />
         
-        <div className="relative h-full overflow-y-auto flex items-center justify-center">
+        <div className="relative h-full overflow-y-auto flex items-center justify-center p-4 md:p-8">
           {/* Close button */}
           <button
             onClick={handleClose}
-            className="absolute top-8 right-8 w-12 h-12 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition-colors shadow-lg z-10"
+            className="absolute top-6 md:top-8 right-6 md:right-8 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition-colors shadow-lg z-10 flex-shrink-0"
           >
             <svg
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
+              className="md:w-6 md:h-6"
             >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -181,11 +181,11 @@ const ServiceMenu = () => {
 
           {/* Content */}
           {selectedService && (
-            <div className="max-w-4xl mx-auto px-8 text-center">
+            <div className="max-w-4xl mx-auto text-center">
               <div className="text-white">
                 {/* Contact heading in Sacramento font */}
                 <h2 
-                  className="text-8xl mb-4"
+                  className="text-4xl md:text-8xl mb-2 md:mb-4"
                   style={{ 
                     fontFamily: 'Sacramento, cursive',
                     color: '#c4ff00'
@@ -196,15 +196,24 @@ const ServiceMenu = () => {
                 
                 {/* LETS TALK in bold white */}
                 <h1 
-                  className="text-7xl font-black mb-16"
+                  className="text-3xl md:text-7xl font-black mb-8 md:mb-16"
                   style={{ fontFamily: 'Antonio, sans-serif' }}
                 >
                   LETS TALK
                 </h1>
                 
-                {/* Service description in Anto font */}
+                {/* Service image on mobile - below text */}
+                <div className="md:hidden mb-6 rounded-lg overflow-hidden shadow-xl w-full max-w-sm mx-auto">
+                  <img 
+                    src={selectedService.image}
+                    alt={selectedService.title}
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+                
+                {/* Service description in Antonio font */}
                 <p 
-                  className="text-2xl leading-relaxed text-white px-8"
+                  className="text-base md:text-2xl leading-relaxed text-white px-4 md:px-8"
                   style={{ 
                     fontFamily: 'Antonio, sans-serif',
                     textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'

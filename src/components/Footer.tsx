@@ -21,56 +21,59 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Company Info with Logo */}
-          <div className="col-span-2">
-            <div className="text-center mb-6">
-              <div className="text-2xl font-bold bg-gradient-to-r from-lime-400 to-cyan-400 bg-clip-text text-transparent mb-4 anton-font">
+          <div className="col-span-1">
+            <div className="mb-4">
+              <div className="text-xl font-bold bg-gradient-to-r from-lime-400 to-cyan-400 bg-clip-text text-transparent mb-3 anton-font">
                 SRays Solutions
               </div>
-              <p className="text-gray-300 anton-font">
+              <p className="text-gray-300 text-sm anton-font leading-tight">
                 Transforming businesses through innovative HR solutions,
                 cutting-edge IT services, and creative design expertise.
               </p>
             </div>
-            <div className="flex justify-center">
-              <img src={logoheader} alt="SRays Solutions Logo" className="h-12" />
+            <div className="flex justify-start">
+              <img src={logoheader} alt="SRays Solutions Logo" className="h-10" />
             </div>
           </div>
 
+          {/* Empty spacer column */}
+          <div></div>
+
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-white anton-font">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold mb-4 text-white anton-font text-center">Quick Links</h4>
+            <ul className="space-y-2 flex flex-col items-center">
               <li>
-                <button
+                <p
                   onClick={() => scrollToSection("home")}
-                  className="text-gray-300 hover:text-lime-400 transition-colors anton-font bg-transparent border-none p-0 cursor-pointer text-left"
+                  className="text-white hover:text-lime-400 transition-colors anton-font cursor-pointer m-0"
                 >
                   Home
-                </button>
+                </p>
               </li>
               <li>
-                <button
+                <p
                   onClick={() => scrollToSection("services")}
-                  className="text-gray-300 hover:text-lime-400 transition-colors anton-font bg-transparent border-none p-0 cursor-pointer text-left"
+                  className="text-white hover:text-lime-400 transition-colors anton-font cursor-pointer m-0"
                 >
                   Services
-                </button>
+                </p>
               </li>
               <li>
-                <button
+                <p
                   onClick={() => scrollToSection("about")}
-                  className="text-gray-300 hover:text-lime-400 transition-colors anton-font bg-transparent border-none p-0 cursor-pointer text-left"
+                  className="text-white hover:text-lime-400 transition-colors anton-font cursor-pointer m-0"
                 >
                   About
-                </button>
+                </p>
               </li>
               <li>
-                <button
+                <p
                   onClick={() => scrollToSection("contact")}
-                  className="text-gray-300 hover:text-lime-400 transition-colors anton-font bg-transparent border-none p-0 cursor-pointer text-left"
+                  className="text-white hover:text-lime-400 transition-colors anton-font cursor-pointer m-0"
                 >
                   Contact
-                </button>
+                </p>
               </li>
             </ul>
           </div>
