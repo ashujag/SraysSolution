@@ -59,7 +59,7 @@ const KnowledgeSpot = () => {
       const isVisible = sectionRect.top < window.innerHeight * 0.75;
 
       if (isVisible) {
-        setScrollAnimations((prev) =>
+        setScrollAnimations(() =>
           knowledgeItems.reduce((acc, item) => {
             acc[item.id] = true;
             return acc;
