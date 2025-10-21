@@ -104,7 +104,8 @@ const AboutUs = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-white p-4 md:p-8 relative overflow-hidden" style={{ fontFamily: 'Anton, sans-serif' }}>
+    <div id ="about"
+     className="bg-white p-2 md:p-4 relative overflow-hidden" style={{ fontFamily: 'Anton, sans-serif' }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
         
@@ -141,212 +142,212 @@ const AboutUs = () => {
       
       <div className="max-w-6xl mx-auto relative">
         {/* Logo */}
-        <div className="mb-8 md:mb-12">
+        <div className="mb-4 md:mb-6">
           <div className="flex items-center gap-2">
-            <svg width="32" height="32" viewBox="0 0 40 40" fill="none" className="md:w-10 md:h-10">
+            <svg width="28" height="28" viewBox="0 0 40 40" fill="none" className="md:w-8 md:h-8">
               <path d="M20 5C11.716 5 5 11.716 5 20C5 28.284 11.716 35 20 35" stroke="#06B6D4" strokeWidth="3" strokeLinecap="round"/>
               <path d="M20 10C14.477 10 10 14.477 10 20C10 25.523 14.477 30 20 30" stroke="#06B6D4" strokeWidth="3" strokeLinecap="round"/>
             </svg>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-start">
           {/* Left Content */}
-          <div className="pt-4 md:pt-8">
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-6" style={{ fontFamily: 'Anton, sans-serif' }}>
+          <div className="pt-2 md:pt-4">
+            <h1 className="text-2xl md:text-4xl font-bold leading-tight mb-3" style={{ fontFamily: 'Anton, sans-serif' }}>
               About Us
             </h1>
-            <h2 className="text-xl md:text-2xl font-bold text-blue-600 mb-4" style={{ fontFamily: 'Anton, sans-serif' }}>
+            <h2 className="text-lg md:text-xl font-bold text-blue-600 mb-2" style={{ fontFamily: 'Anton, sans-serif' }}>
               We are awesome team work for your business dream
             </h2>
-            <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4" style={{ fontFamily: 'Anton, sans-serif' }}>
+            <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-2" style={{ fontFamily: 'Anton, sans-serif' }}>
               "SRays" is an HR outsourcing firm incorporated by skilled and proficient wizards in the field of Human Resources aiming to Virtualize the HR Process. We have professionals who are actively exercising Human Resources practices in the Industry, by providing up-to-date sophisticated HR solutions and HRMS (Human Resource Management System) software, IT services to start ups, SMEs, Family Based businesses and Corporates.
             </p>
-            <p className="text-gray-700 text-sm md:text-base leading-relaxed" style={{ fontFamily: 'Anton, sans-serif' }}>
+            <p className="text-gray-700 text-xs md:text-sm leading-relaxed" style={{ fontFamily: 'Anton, sans-serif' }}>
               As a contribution towards Students community, we are conducting some HR Skill Development Programs for helping them to Up-Skill their knowledge towards the Industrial requirements. Also we conduct Technical Skill Development Programs for HR Professionals and Entrepreneurs.
             </p>
           </div>
 
           {/* Right Content - Service Cards */}
-          <div className="relative min-h-[500px] md:min-h-[600px]">
+          <div className="relative">
             {/* Card Stack - Desktop Layout */}
-            <div className="hidden lg:block relative" style={{ height: '450px' }}>
+            <div className="hidden lg:block relative" style={{ height: '380px' }}>
               {/* Website Development Card - Blue - Top Left */}
               <div 
-                className={`card-hover absolute bg-blue-600 text-white p-5 rounded-xl shadow-lg cursor-pointer ${
+                className={`card-hover absolute bg-blue-600 text-white p-4 rounded-xl shadow-lg cursor-pointer ${
                   hoveredCard === 'website' ? 'highlight-glow' : ''
                 }`}
                 style={{ 
                   top: '0px', 
                   left: '0px', 
-                  width: '180px', 
-                  height: '110px',
+                  width: '160px', 
+                  height: '90px',
                   zIndex: 4
                 }}
                 onMouseEnter={() => setHoveredCard('website')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <Monitor className="w-10 h-10 mb-2" />
+                  <Monitor className="w-8 h-8 mb-1" />
                   <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Website Development</p>
                 </div>
               </div>
 
               {/* Mobile App Development Card - Cyan - Top Right */}
               <div 
-                className={`card-hover absolute bg-cyan-400 text-white p-5 rounded-xl shadow-lg cursor-pointer ${
+                className={`card-hover absolute bg-cyan-400 text-white p-4 rounded-xl shadow-lg cursor-pointer ${
                   hoveredCard === 'mobile' ? 'highlight-glow' : ''
                 }`}
                 style={{ 
                   top: '0px', 
-                  left: '195px', 
-                  width: '180px', 
-                  height: '110px',
+                  left: '170px', 
+                  width: '160px', 
+                  height: '90px',
                   zIndex: 4
                 }}
                 onMouseEnter={() => setHoveredCard('mobile')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <Smartphone className="w-10 h-10 mb-2" />
+                  <Smartphone className="w-8 h-8 mb-1" />
                   <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Mobile App Development</p>
                 </div>
               </div>
 
               {/* Management Card - White - Left Side Below */}
               <div 
-                className={`card-hover absolute bg-white p-7 rounded-xl shadow-2xl border border-gray-100 cursor-pointer ${
+                className={`card-hover absolute bg-white p-5 rounded-xl shadow-2xl border border-gray-100 cursor-pointer ${
                   hoveredCard === 'management' ? 'highlight-glow' : ''
                 }`}
                 style={{ 
-                  top: '130px', 
+                  top: '100px', 
                   left: '0px', 
-                  width: '270px', 
-                  height: '210px',
+                  width: '240px', 
+                  height: '180px',
                   zIndex: 3
                 }}
                 onMouseEnter={() => setHoveredCard('management')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                <h2 className="text-7xl font-bold text-gray-900 mb-3 leading-none" style={{ fontFamily: 'Anton, sans-serif' }}>01.</h2>
-                <h3 className="text-lg font-bold text-blue-600 mb-2" style={{ fontFamily: 'Anton, sans-serif' }}>Management</h3>
+                <h2 className="text-6xl font-bold text-gray-900 mb-2 leading-none" style={{ fontFamily: 'Anton, sans-serif' }}>01.</h2>
+                <h3 className="text-base font-bold text-blue-600 mb-1" style={{ fontFamily: 'Anton, sans-serif' }}>Management</h3>
                 <p className="text-gray-500 text-xs leading-relaxed" style={{ fontFamily: 'Anton, sans-serif' }}>
-                  A wonderful serenity has taken possession of my entire
+                
                 </p>
               </div>
 
               {/* Logo & Branding Card - Green - Right Side Middle */}
               <div 
-                className={`card-hover absolute bg-emerald-500 text-white p-5 rounded-xl shadow-lg cursor-pointer ${
+                className={`card-hover absolute bg-emerald-500 text-white p-4 rounded-xl shadow-lg cursor-pointer ${
                   hoveredCard === 'logo' ? 'highlight-glow' : ''
                 }`}
                 style={{ 
-                  top: '130px', 
-                  left: '195px', 
-                  width: '180px', 
-                  height: '110px',
+                  top: '100px', 
+                  left: '170px', 
+                  width: '160px', 
+                  height: '90px',
                   zIndex: 4
                 }}
                 onMouseEnter={() => setHoveredCard('logo')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <Palette className="w-10 h-10 mb-2" />
+                  <Palette className="w-8 h-8 mb-1" />
                   <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Logo & Branding</p>
                 </div>
               </div>
 
               {/* Digital Strategy Card - Purple - Right Side Bottom */}
               <div 
-                className={`card-hover absolute bg-purple-700 text-white p-5 rounded-xl shadow-lg cursor-pointer ${
+                className={`card-hover absolute bg-purple-700 text-white p-4 rounded-xl shadow-lg cursor-pointer ${
                   hoveredCard === 'strategy' ? 'highlight-glow' : ''
                 }`}
                 style={{ 
-                  top: '260px', 
-                  left: '195px', 
-                  width: '180px', 
-                  height: '110px',
+                  top: '200px', 
+                  left: '170px', 
+                  width: '160px', 
+                  height: '90px',
                   zIndex: 4
                 }}
                 onMouseEnter={() => setHoveredCard('strategy')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <TrendingUp className="w-10 h-10 mb-2" />
+                  <TrendingUp className="w-8 h-8 mb-1" />
                   <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Digital Strategy</p>
                 </div>
               </div>
             </div>
 
             {/* Mobile Layout - Stacked Cards */}
-            <div className="lg:hidden space-y-4">
+            <div className="lg:hidden space-y-2">
               {/* Management Card */}
               <div 
-                className={`card-hover bg-white p-6 rounded-lg shadow-xl border border-gray-100 cursor-pointer ${
+                className={`card-hover bg-white p-5 rounded-lg shadow-xl border border-gray-100 cursor-pointer ${
                   hoveredCard === 'management' ? 'highlight-glow' : ''
                 }`}
                 onMouseEnter={() => setHoveredCard('management')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                <h2 className="text-5xl font-bold text-gray-900 mb-3" style={{ fontFamily: 'Anton, sans-serif' }}>01.</h2>
-                <h3 className="text-lg font-bold text-blue-600 mb-2" style={{ fontFamily: 'Anton, sans-serif' }}>Management</h3>
-                <p className="text-gray-500 text-sm leading-relaxed" style={{ fontFamily: 'Anton, sans-serif' }}>
+                <h2 className="text-4xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'Anton, sans-serif' }}>01.</h2>
+                <h3 className="text-base font-bold text-blue-600 mb-1" style={{ fontFamily: 'Anton, sans-serif' }}>Management</h3>
+                <p className="text-gray-500 text-xs leading-relaxed" style={{ fontFamily: 'Anton, sans-serif' }}>
                   A wonderful serenity has taken possession of my entire
                 </p>
               </div>
 
               {/* Website Development Card */}
               <div 
-                className={`card-hover bg-blue-600 text-white p-6 rounded-lg shadow-lg cursor-pointer ${
+                className={`card-hover bg-blue-600 text-white p-5 rounded-lg shadow-lg cursor-pointer ${
                   hoveredCard === 'website' ? 'highlight-glow' : ''
                 }`}
                 onMouseEnter={() => setHoveredCard('website')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                <div className="flex items-center gap-4">
-                  <Monitor className="w-8 h-8" />
+                <div className="flex items-center gap-3">
+                  <Monitor className="w-7 h-7" />
                   <p className="text-sm font-bold" style={{ fontFamily: 'Anton, sans-serif' }}>Website Development</p>
                 </div>
               </div>
 
               {/* Mobile App Development Card */}
               <div 
-                className={`card-hover bg-cyan-400 text-white p-6 rounded-lg shadow-lg cursor-pointer ${
+                className={`card-hover bg-cyan-400 text-white p-5 rounded-lg shadow-lg cursor-pointer ${
                   hoveredCard === 'mobile' ? 'highlight-glow' : ''
                 }`}
                 onMouseEnter={() => setHoveredCard('mobile')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                <div className="flex items-center gap-4">
-                  <Smartphone className="w-8 h-8" />
+                <div className="flex items-center gap-3">
+                  <Smartphone className="w-7 h-7" />
                   <p className="text-sm font-bold" style={{ fontFamily: 'Anton, sans-serif' }}>Mobile App Development</p>
                 </div>
               </div>
 
               {/* Logo & Branding Card */}
               <div 
-                className={`card-hover bg-emerald-500 text-white p-6 rounded-lg shadow-lg cursor-pointer ${
+                className={`card-hover bg-emerald-500 text-white p-5 rounded-lg shadow-lg cursor-pointer ${
                   hoveredCard === 'logo' ? 'highlight-glow' : ''
                 }`}
                 onMouseEnter={() => setHoveredCard('logo')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                <div className="flex items-center gap-4">
-                  <Palette className="w-8 h-8" />
+                <div className="flex items-center gap-3">
+                  <Palette className="w-7 h-7" />
                   <p className="text-sm font-bold" style={{ fontFamily: 'Anton, sans-serif' }}>Logo & Branding</p>
                 </div>
               </div>
 
               {/* Digital Strategy Card */}
               <div 
-                className={`card-hover bg-purple-700 text-white p-6 rounded-lg shadow-lg cursor-pointer ${
+                className={`card-hover bg-purple-700 text-white p-5 rounded-lg shadow-lg cursor-pointer ${
                   hoveredCard === 'strategy' ? 'highlight-glow' : ''
                 }`}
                 onMouseEnter={() => setHoveredCard('strategy')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                <div className="flex items-center gap-4">
-                  <TrendingUp className="w-8 h-8" />
+                <div className="flex items-center gap-3">
+                  <TrendingUp className="w-7 h-7" />
                   <p className="text-sm font-bold" style={{ fontFamily: 'Anton, sans-serif' }}>Digital Strategy</p>
                 </div>
               </div>
