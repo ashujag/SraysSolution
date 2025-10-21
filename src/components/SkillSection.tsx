@@ -53,6 +53,7 @@ const SkillSection = () => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Butler:wght@400;700&display=swap');
 
         @keyframes fadeInUp {
           from {
@@ -186,6 +187,7 @@ const SkillSection = () => {
 
         .nav-button {
           transition: all 0.3s ease;
+          -webkit-tap-highlight-color: transparent;
         }
 
         .nav-button:hover {
@@ -252,6 +254,45 @@ const SkillSection = () => {
         .main-image {
           animation: imageTransition 0.6s ease-out;
         }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+          .top-cities {
+            animation: fadeInLeft 0.8s ease-out;
+          }
+          
+          .image-container {
+            animation: none;
+          }
+          
+          * {
+            -webkit-tap-highlight-color: transparent;
+          }
+        }
+
+        /* Desktop Layout */
+        @media (min-width: 769px) {
+          .middle-section-grid {
+            display: grid !important;
+            grid-template-columns: auto 1fr auto !important;
+            grid-template-rows: 1fr !important;
+            gap: clamp(30px, 5vw, 60px) !important;
+            align-items: center !important;
+          }
+        }
+
+        /* Prevent animations on orientation change */
+        @media (orientation: landscape) and (max-height: 500px) {
+          .top-cities,
+          .main-heading,
+          .office-badge,
+          .team-section,
+          .stats-section,
+          .card-container,
+          .management-text {
+            animation: none !important;
+          }
+        }
       `}</style>
 
       {/* Top Section */}
@@ -277,7 +318,7 @@ const SkillSection = () => {
       </div>
 
       {/* Middle Section */}
-      <div style={styles.middleSection}>
+      <div style={styles.middleSection} className="middle-section-grid">
         <div className="team-section" style={styles.teamSection}>
           <div style={styles.teamNumber}>
             <span className="stat-number">{skills[currentSlide].percentage}%</span>
@@ -293,6 +334,7 @@ const SkillSection = () => {
               src={skills[currentSlide].image}
               alt={skills[currentSlide].name}
               style={styles.mainImage}
+              loading="lazy"
             />
             {/* Skill Progress Overlay */}
             <div style={styles.progressOverlay}>
@@ -349,6 +391,7 @@ const SkillSection = () => {
           className="nav-button"
           style={styles.navButton} 
           onClick={handlePrev}
+          aria-label="Previous skill"
         >
           ←
         </button>
@@ -356,6 +399,7 @@ const SkillSection = () => {
           className="nav-button"
           style={styles.navButton} 
           onClick={handleNext}
+          aria-label="Next skill"
         >
           →
         </button>
@@ -377,6 +421,7 @@ const SkillSection = () => {
                 homeSection.scrollIntoView({ behavior: "smooth" });
               }
             }}
+            aria-label="Get SRays HRMS"
           >
             Get SRays Now!
           </button>
@@ -396,59 +441,70 @@ const styles: { [key: string]: React.CSSProperties } = {
     width: '100%',
     minHeight: '100vh',
     background: '#c8f346',
-    padding: '40px',
+    padding: 'clamp(15px, 4vw, 40px)',
     fontFamily: 'Anton, sans-serif',
     position: 'relative',
     overflow: 'hidden',
+    WebkitOverflowScrolling: 'touch',
   },
   topSection: {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginBottom: '60px',
+    marginBottom: 'clamp(20px, 8vw, 60px)',
+    gap: 'clamp(15px, 4vw, 40px)',
   },
   topCities: {
-    fontFamily: 'Sacramento, cursive',
-    fontSize: '52px',
+    fontFamily: 'Butler, serif',
+    fontSize: 'clamp(24px, 7vw, 52px)',
     color: '#1a1a1a',
     fontWeight: '400',
+    wordBreak: 'break-word',
   },
   mainHeading: {
     fontFamily: 'Anton, sans-serif',
-    fontSize: '70px',
+    fontSize: 'clamp(24px, 9vw, 70px)',
     fontWeight: '400',
     color: '#1a1a1a',
-    lineHeight: '0.95',
+    lineHeight: '1.1',
     letterSpacing: '0px',
     textAlign: 'center',
-    flex: 1,
+    width: '100%',
+    wordBreak: 'break-word',
   },
   officeBadge: {
     background: 'rgba(255, 255, 255, 0.3)',
     borderRadius: '50px',
-    padding: '8px 20px 8px 20px',
+    padding: '8px 16px',
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
+    gap: '10px',
     backdropFilter: 'blur(10px)',
+    alignSelf: 'center',
+    flexWrap: 'nowrap',
+    justifyContent: 'center',
+    maxWidth: '100%',
   },
   badgeContent: {
     display: 'flex',
     alignItems: 'center',
-    gap: '8px',
-    fontSize: '16px',
+    gap: '6px',
+    fontSize: 'clamp(11px, 3.5vw, 16px)',
     fontWeight: '400',
     color: '#1a1a1a',
     fontFamily: 'Anton, sans-serif',
+    whiteSpace: 'nowrap',
   },
   bullet: {
-    fontSize: '12px',
+    fontSize: '10px',
   },
   badgeImage: {
-    width: '60px',
-    height: '60px',
+    width: 'clamp(40px, 12vw, 60px)',
+    height: 'clamp(40px, 12vw, 60px)',
     borderRadius: '50%',
     overflow: 'hidden',
+    flexShrink: 0,
   },
   badgeImg: {
     width: '100%',
@@ -456,39 +512,44 @@ const styles: { [key: string]: React.CSSProperties } = {
     objectFit: 'cover',
   },
   middleSection: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridTemplateRows: 'auto auto auto',
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: '40px',
-    marginBottom: '40px',
+    gap: 'clamp(20px, 5vw, 40px)',
+    marginBottom: 'clamp(20px, 6vw, 40px)',
+    maxWidth: '1400px',
+    margin: '0 auto clamp(20px, 6vw, 40px) auto',
   },
   teamSection: {
-    textAlign: 'left',
+    textAlign: 'center',
   },
   teamNumber: {
     fontFamily: 'Anton, sans-serif',
-    fontSize: '110px',
+    fontSize: 'clamp(50px, 14vw, 110px)',
     fontWeight: '400',
     color: '#1a1a1a',
-    lineHeight: '0.9',
+    lineHeight: '1',
   },
   teamLabel: {
     fontFamily: 'Anton, sans-serif',
-    fontSize: '16px',
+    fontSize: 'clamp(11px, 3vw, 16px)',
     fontWeight: '400',
     color: '#1a1a1a',
     marginTop: '8px',
     letterSpacing: '1px',
   },
   cardContainer: {
-    flex: 1,
+    width: '100%',
     maxWidth: '500px',
+    margin: '0 auto',
   },
   imageSection: {
     background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 200, 200, 0.3) 100%)',
     borderRadius: '60% 40% 70% 30% / 50% 60% 40% 50%',
-    padding: '50px',
-    marginBottom: '-50px',
+    padding: 'clamp(15px, 4vw, 50px)',
+    marginBottom: 'clamp(-20px, -6vw, -50px)',
     position: 'relative',
     zIndex: 2,
   },
@@ -498,16 +559,17 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: '20px',
     display: 'block',
     objectFit: 'cover',
+    touchAction: 'pan-y',
   },
   progressOverlay: {
     position: 'absolute',
-    bottom: '70px',
-    left: '70px',
-    right: '70px',
+    bottom: 'clamp(30px, 8vw, 70px)',
+    left: 'clamp(30px, 8vw, 70px)',
+    right: 'clamp(30px, 8vw, 70px)',
   },
   progressBarContainer: {
     width: '100%',
-    height: '12px',
+    height: 'clamp(8px, 2.5vw, 12px)',
     background: 'rgba(255, 255, 255, 0.3)',
     borderRadius: '10px',
     overflow: 'hidden',
@@ -521,143 +583,161 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   cardContent: {
     background: '#1a3a2a',
-    padding: '40px',
+    padding: 'clamp(20px, 5vw, 40px)',
     borderRadius: '12px',
     position: 'relative',
     zIndex: 1,
   },
   country: {
     fontFamily: 'Anton, sans-serif',
-    fontSize: '48px',
-    fontWeight: '400',
-    color: '#ffffff',
-    marginBottom: '16px',
-    letterSpacing: '1px',
-  },
-  cardTitle: {
-    fontFamily: 'Anton, sans-serif',
-    fontSize: '24px',
+    fontSize: 'clamp(22px, 7vw, 48px)',
     fontWeight: '400',
     color: '#ffffff',
     marginBottom: '12px',
+    letterSpacing: '1px',
+    wordBreak: 'break-word',
+  },
+  cardTitle: {
+    fontFamily: 'Anton, sans-serif',
+    fontSize: 'clamp(16px, 4.5vw, 24px)',
+    fontWeight: '400',
+    color: '#ffffff',
+    marginBottom: '10px',
     letterSpacing: '0.5px',
+    wordBreak: 'break-word',
   },
   cardDescription: {
     fontFamily: 'Arial, sans-serif',
-    fontSize: '16px',
+    fontSize: 'clamp(13px, 3.5vw, 16px)',
     color: '#ffffff',
     lineHeight: '1.6',
     opacity: 0.9,
     fontWeight: '400',
   },
   statsSection: {
-    textAlign: 'right',
+    textAlign: 'center',
   },
   statsNumber: {
     fontFamily: 'Anton, sans-serif',
-    fontSize: '140px',
+    fontSize: 'clamp(60px, 16vw, 140px)',
     fontWeight: '400',
     color: '#1a1a1a',
-    lineHeight: '0.85',
+    lineHeight: '1',
   },
   statsLabel: {
     fontFamily: 'Anton, sans-serif',
-    fontSize: '16px',
+    fontSize: 'clamp(11px, 3vw, 16px)',
     fontWeight: '400',
     color: '#1a1a1a',
-    marginTop: '12px',
+    marginTop: '10px',
     letterSpacing: '1px',
   },
   descriptionSection: {
     maxWidth: '800px',
-    margin: '0 auto 30px auto',
+    margin: '0 auto clamp(20px, 5vw, 30px) auto',
     textAlign: 'center',
+    padding: '0 clamp(10px, 3vw, 20px)',
   },
   descriptionText: {
     fontFamily: 'Arial, sans-serif',
-    fontSize: '16px',
+    fontSize: 'clamp(13px, 3.5vw, 16px)',
     color: '#1a1a1a',
-    lineHeight: '1.8',
+    lineHeight: '1.7',
     opacity: 0.8,
   },
   managementText: {
     fontFamily: 'Anton, sans-serif',
-    fontSize: '22px',
+    fontSize: 'clamp(14px, 4vw, 22px)',
     fontWeight: '400',
     color: '#1a1a1a',
-    textAlign: 'right',
-    marginBottom: '40px',
+    textAlign: 'center',
+    marginBottom: 'clamp(20px, 6vw, 40px)',
     letterSpacing: '0.5px',
+    padding: '0 clamp(10px, 3vw, 20px)',
+    wordBreak: 'break-word',
   },
   navigation: {
     display: 'flex',
-    gap: '20px',
+    gap: 'clamp(15px, 4vw, 20px)',
     justifyContent: 'center',
-    marginBottom: '40px',
+    marginBottom: 'clamp(20px, 6vw, 40px)',
+    touchAction: 'manipulation',
   },
   navButton: {
-    width: '70px',
-    height: '70px',
+    width: 'clamp(50px, 14vw, 70px)',
+    height: 'clamp(50px, 14vw, 70px)',
     borderRadius: '50%',
-    border: '3px solid #1a1a1a',
+    border: '2px solid #1a1a1a',
     background: 'transparent',
-    fontSize: '32px',
+    fontSize: 'clamp(20px, 6vw, 32px)',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     color: '#1a1a1a',
     fontWeight: 'bold',
+    touchAction: 'manipulation',
+    WebkitTapHighlightColor: 'transparent',
+    userSelect: 'none',
   },
   ctaSection: {
     display: 'flex',
     justifyContent: 'center',
-    marginBottom: '40px',
+    marginBottom: 'clamp(60px, 10vw, 80px)',
+    padding: '0 clamp(10px, 3vw, 20px)',
   },
   ctaCard: {
     background: 'rgba(26, 58, 42, 0.9)',
-    padding: '40px 50px',
+    padding: 'clamp(20px, 5vw, 50px)',
     borderRadius: '20px',
     maxWidth: '600px',
+    width: '100%',
     textAlign: 'center',
     backdropFilter: 'blur(10px)',
   },
   ctaTitle: {
     fontFamily: 'Anton, sans-serif',
-    fontSize: '28px',
+    fontSize: 'clamp(18px, 5.5vw, 28px)',
     color: '#ffffff',
-    marginBottom: '20px',
+    marginBottom: '16px',
     fontWeight: '400',
+    wordBreak: 'break-word',
   },
   ctaDescription: {
     fontFamily: 'Arial, sans-serif',
-    fontSize: '16px',
+    fontSize: 'clamp(13px, 3.5vw, 16px)',
     color: '#ffffff',
-    lineHeight: '1.8',
-    marginBottom: '30px',
+    lineHeight: '1.7',
+    marginBottom: '24px',
     opacity: 0.9,
   },
   ctaButton: {
     fontFamily: 'Anton, sans-serif',
     background: '#c8f346',
     color: '#1a1a1a',
-    padding: '15px 40px',
-    fontSize: '20px',
+    padding: 'clamp(12px, 3vw, 15px) clamp(24px, 6vw, 40px)',
+    fontSize: 'clamp(14px, 4vw, 20px)',
     border: 'none',
     borderRadius: '50px',
     cursor: 'pointer',
     fontWeight: '400',
     letterSpacing: '0.5px',
     transition: 'all 0.3s ease',
+    touchAction: 'manipulation',
+    WebkitTapHighlightColor: 'transparent',
+    userSelect: 'none',
+    minHeight: '44px',
   },
   url: {
     position: 'absolute',
-    bottom: '20px',
-    left: '40px',
-    fontSize: '14px',
+    bottom: '15px',
+    left: 'clamp(15px, 4vw, 40px)',
+    fontSize: 'clamp(10px, 2.5vw, 14px)',
     color: '#1a1a1a',
     fontWeight: '500',
     fontFamily: 'Arial, sans-serif',
+    wordBreak: 'break-all',
+    maxWidth: 'calc(100% - 30px)',
   },
 };
 
