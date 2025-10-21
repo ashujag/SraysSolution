@@ -1,4 +1,4 @@
-import NewsCard from "./NewsCard";
+
 
 function Blog() {
   const newsItems = [
