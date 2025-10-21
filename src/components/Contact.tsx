@@ -104,7 +104,7 @@ export default function ContactPage() {
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-400 rounded-full filter blur-3xl"></div>
         </div>
         <div className="relative text-center z-10">
-          <h1 className="sacramento-font text-7xl font-bold text-lime-300 italic">
+          <h1 className="Anto-font text-7xl font-bold text-lime-300 italic">
             Contact
           </h1>
           <p className="anton-font text-5xl font-bold text-white mt-2">
