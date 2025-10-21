@@ -114,9 +114,9 @@ export default function ContactPage() {
       </div>
 
       {/* Contact Form Section */}
-      <div className="bg-white px-8 py-16">
+      <div className="bg-white px-4 md:px-8 py-16">
         {/* Yellow Banner */}
-        <div className="bg-yellow-300 rounded-lg p-4 mb-12 flex justify-center gap-8 text-sm font-bold text-black anton-font">
+        <div className="bg-yellow-300 rounded-lg p-4 mb-12 flex flex-col md:flex-row justify-center gap-4 md:gap-8 text-sm font-bold text-black anton-font">
           <div className="flex items-center gap-2">
             <span>●</span>
             <span>Quick response within 24/7</span>
@@ -134,7 +134,7 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto">
           <div>
             {/* Name Row */}
-            <div className="grid grid-cols-2 gap-8 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8">
               <div>
                 <label className="text-sm font-bold text-black mb-2 block anton-font">
                   First name
@@ -176,7 +176,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Row */}
-            <div className="grid grid-cols-2 gap-8 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8">
               <div>
                 <label className="text-sm font-bold text-black mb-2 block anton-font">
                   CONTACT
@@ -214,7 +214,7 @@ export default function ContactPage() {
             </div>
 
             {/* Company Row */}
-            <div className="grid grid-cols-2 gap-8 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8">
               <div>
                 <label className="text-sm font-bold text-black mb-2 block anton-font">
                   COMPANY
@@ -280,40 +280,40 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Info Cards (unchanged) */}
-          <div className="grid grid-cols-3 gap-8 mb-16">
+          {/* Info Cards - Fixed for mobile */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
             {/* Phone */}
-            <div className="flex items-center gap-4">
-              <div className="bg-yellow-300 rounded-full p-3">
+            <div className="flex items-start gap-4">
+              <div className="bg-yellow-300 rounded-full p-3 flex-shrink-0">
                 <Phone className="w-6 h-6 text-black" />
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="font-bold text-black anton-font">PHONE</p>
-                <p className="text-sm text-gray-600 anton-font">044-42735893</p>
+                <p className="text-sm text-gray-600 anton-font break-words">044-42735893</p>
               </div>
             </div>
 
             {/* Mail */}
-            <div className="flex items-center gap-4">
-              <div className="bg-yellow-300 rounded-full p-3">
+            <div className="flex items-start gap-4">
+              <div className="bg-yellow-300 rounded-full p-3 flex-shrink-0">
                 <Mail className="w-6 h-6 text-black" />
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="font-bold text-black anton-font">MAIL</p>
-                <p className="text-sm text-gray-600 anton-font">
+                <p className="text-sm text-gray-600 anton-font break-words">
                   hr@srayssolutions.in
                 </p>
               </div>
             </div>
 
             {/* Address */}
-            <div className="flex items-center gap-4">
-              <div className="bg-yellow-300 rounded-full p-3">
+            <div className="flex items-start gap-4">
+              <div className="bg-yellow-300 rounded-full p-3 flex-shrink-0">
                 <MapPin className="w-6 h-6 text-black" />
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="font-bold text-black anton-font">ADDRESS</p>
-                <p className="text-sm text-gray-600 anton-font">
+                <p className="text-sm text-gray-600 anton-font break-words">
                   7, Sairam street, Jalladampet, Chennai-600100
                 </p>
               </div>
@@ -321,9 +321,9 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      <div className="bg-white border-t border-gray-200 px-8 py-16">
+      <div className="bg-white border-t border-gray-200 px-4 md:px-8 py-16">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-4 gap-12 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-16">
             {/* Left Column */}
             <div>
               <p className="text-xs font-bold text-gray-600 mb-2 anton-font">
@@ -363,8 +363,8 @@ export default function ContactPage() {
             {/* Right Column */}
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-amber-900"></div>
-                <div>
+                <div className="w-10 h-10 rounded-full bg-amber-900 flex-shrink-0"></div>
+                <div className="min-w-0">
                   <p className="text-xs font-bold text-black anton-font">
                     RICH JOHNSON
                   </p>
@@ -381,21 +381,21 @@ export default function ContactPage() {
 
           {/* CTA Button with Hover Animation */}
           <div className="bg-lime-400 rounded-full py-6 px-8 text-center mb-16 flex items-center justify-center gap-3 cursor-pointer transition-all duration-300 group overflow-hidden">
-            <MessageSquare className="w-6 h-6 text-black transition-transform duration-300 group-hover:rotate-12" />
-            <div className="relative w-[230px] text-2xl font-bold text-black anton-font h-8 flex items-center justify-center">
+            <MessageSquare className="w-6 h-6 text-black transition-transform duration-300 group-hover:rotate-12 flex-shrink-0" />
+            <div className="relative w-full md:w-[230px] text-xl md:text-2xl font-bold text-black anton-font h-8 flex items-center justify-center">
               {/* Default text */}
               <span className="absolute transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-2">
                 LET'S TALK
               </span>
               {/* Hover text */}
-              <span className="absolute opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+              <span className="absolute opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-sm md:text-2xl">
                 hr@srayssolutions.in
               </span>
             </div>
           </div>
 
           {/* Newsletter */}
-          <div className="grid grid-cols-2 gap-12 border-t border-gray-200 pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 border-t border-gray-200 pt-8">
             <div>
               <p className="text-xs font-bold text-black mb-2 anton-font">
                 SUBSCRIBE TO OUR NEWSLETTER
@@ -417,7 +417,7 @@ export default function ContactPage() {
                   className="flex-1 border-b-2 border-black bg-white px-2 py-1 text-xs outline-none anton-font"
                 />
                 <button className="text-black font-bold text-xs anton-font">
-                  ↑
+                  →
                 </button>
               </div>
             </div>
@@ -432,10 +432,10 @@ export default function ContactPage() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="text-xs text-gray-600 text-right anton-font"
+              className="text-xs text-gray-600 text-left md:text-right anton-font cursor-pointer"
             >
-              <p className="text-xs text-gray-600 text-right anton-font">
-                CLICK TO GO UP ↑<br />
+              <p className="text-xs text-gray-600 anton-font">
+                CLICK TO GO UP →<br />
                 <span className="text-black font-bold">
                   SRays Solutions. All rights reserved.
                 </span>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const VisionMission: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -6,11 +6,6 @@ const VisionMission: React.FC = () => {
   // const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.2,
-      rootMargin: '0px'
-    };
-
     // const observer = new IntersectionObserver((entries) => {
     //   entries.forEach(entry => {
     //     if (entry.isIntersecting) {
