@@ -150,7 +150,7 @@ const Portfolio = () => {
               <span 
                 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#ff4444] inline-block floating"
                 style={{ 
-                  fontFamily: 'Sacramento, cursive',
+                  fontFamily: 'Anton, sans-serif',
                   fontWeight: 400
                 }}
               >

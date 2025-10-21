@@ -128,7 +128,6 @@ const AboutUs = () => {
         .card-hover:hover {
           transform: translateY(-8px) scale(1.05);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-          z-index: 50;
         }
         
         .highlight-glow {
@@ -171,81 +170,111 @@ const AboutUs = () => {
           {/* Right Content - Service Cards */}
           <div className="relative min-h-[500px] md:min-h-[600px]">
             {/* Card Stack - Desktop Layout */}
-            <div className="hidden lg:block">
-              {/* Website Development Card - Blue */}
+            <div className="hidden lg:block relative" style={{ height: '450px' }}>
+              {/* Website Development Card - Blue - Top Left */}
               <div 
-                className={`card-hover absolute top-0 left-0 bg-blue-600 text-white p-6 rounded-lg shadow-lg cursor-pointer ${
+                className={`card-hover absolute bg-blue-600 text-white p-5 rounded-xl shadow-lg cursor-pointer ${
                   hoveredCard === 'website' ? 'highlight-glow' : ''
                 }`}
-                style={{ width: '192px', height: '128px' }}
+                style={{ 
+                  top: '0px', 
+                  left: '0px', 
+                  width: '180px', 
+                  height: '110px',
+                  zIndex: 4
+                }}
                 onMouseEnter={() => setHoveredCard('website')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <Monitor className="w-8 h-8 mb-2" />
-                  <p className="text-sm font-bold text-center" style={{ fontFamily: 'Anton, sans-serif' }}>Website Development</p>
+                  <Monitor className="w-10 h-10 mb-2" />
+                  <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Website Development</p>
                 </div>
               </div>
 
-              {/* Mobile App Development Card - Cyan */}
+              {/* Mobile App Development Card - Cyan - Top Right */}
               <div 
-                className={`card-hover absolute bg-cyan-400 text-white p-6 rounded-lg shadow-lg cursor-pointer ${
+                className={`card-hover absolute bg-cyan-400 text-white p-5 rounded-xl shadow-lg cursor-pointer ${
                   hoveredCard === 'mobile' ? 'highlight-glow' : ''
                 }`}
-                style={{ top: '0px', left: '220px', width: '192px', height: '128px' }}
+                style={{ 
+                  top: '0px', 
+                  left: '195px', 
+                  width: '180px', 
+                  height: '110px',
+                  zIndex: 4
+                }}
                 onMouseEnter={() => setHoveredCard('mobile')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <Smartphone className="w-8 h-8 mb-2" />
-                  <p className="text-sm font-bold text-center" style={{ fontFamily: 'Anton, sans-serif' }}>Mobile App Development</p>
+                  <Smartphone className="w-10 h-10 mb-2" />
+                  <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Mobile App Development</p>
                 </div>
               </div>
 
-              {/* Logo & Branding Card - Green */}
+              {/* Management Card - White - Left Side Below */}
               <div 
-                className={`card-hover absolute bg-emerald-500 text-white p-6 rounded-lg shadow-lg cursor-pointer ${
+                className={`card-hover absolute bg-white p-7 rounded-xl shadow-2xl border border-gray-100 cursor-pointer ${
+                  hoveredCard === 'management' ? 'highlight-glow' : ''
+                }`}
+                style={{ 
+                  top: '130px', 
+                  left: '0px', 
+                  width: '270px', 
+                  height: '210px',
+                  zIndex: 3
+                }}
+                onMouseEnter={() => setHoveredCard('management')}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                <h2 className="text-7xl font-bold text-gray-900 mb-3 leading-none" style={{ fontFamily: 'Anton, sans-serif' }}>01.</h2>
+                <h3 className="text-lg font-bold text-blue-600 mb-2" style={{ fontFamily: 'Anton, sans-serif' }}>Management</h3>
+                <p className="text-gray-500 text-xs leading-relaxed" style={{ fontFamily: 'Anton, sans-serif' }}>
+                  A wonderful serenity has taken possession of my entire
+                </p>
+              </div>
+
+              {/* Logo & Branding Card - Green - Right Side Middle */}
+              <div 
+                className={`card-hover absolute bg-emerald-500 text-white p-5 rounded-xl shadow-lg cursor-pointer ${
                   hoveredCard === 'logo' ? 'highlight-glow' : ''
                 }`}
-                style={{ top: '135px', left: '220px', width: '192px', height: '128px' }}
+                style={{ 
+                  top: '130px', 
+                  left: '195px', 
+                  width: '180px', 
+                  height: '110px',
+                  zIndex: 4
+                }}
                 onMouseEnter={() => setHoveredCard('logo')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <Palette className="w-8 h-8 mb-2" />
-                  <p className="text-sm font-bold text-center" style={{ fontFamily: 'Anton, sans-serif' }}>Logo & Branding</p>
+                  <Palette className="w-10 h-10 mb-2" />
+                  <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Logo & Branding</p>
                 </div>
               </div>
 
-              {/* Digital Strategy Card - Purple */}
+              {/* Digital Strategy Card - Purple - Right Side Bottom */}
               <div 
-                className={`card-hover absolute bg-purple-700 text-white p-6 rounded-lg shadow-lg cursor-pointer ${
+                className={`card-hover absolute bg-purple-700 text-white p-5 rounded-xl shadow-lg cursor-pointer ${
                   hoveredCard === 'strategy' ? 'highlight-glow' : ''
                 }`}
-                style={{ top: '270px', left: '220px', width: '192px', height: '128px' }}
+                style={{ 
+                  top: '260px', 
+                  left: '195px', 
+                  width: '180px', 
+                  height: '110px',
+                  zIndex: 4
+                }}
                 onMouseEnter={() => setHoveredCard('strategy')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <TrendingUp className="w-8 h-8 mb-2" />
-                  <p className="text-sm font-bold text-center" style={{ fontFamily: 'Anton, sans-serif' }}>Digital Strategy</p>
+                  <TrendingUp className="w-10 h-10 mb-2" />
+                  <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Digital Strategy</p>
                 </div>
-              </div>
-
-              {/* Management Card - White */}
-              <div 
-                className={`card-hover absolute bg-white p-8 rounded-lg shadow-xl border border-gray-100 cursor-pointer ${
-                  hoveredCard === 'management' ? 'highlight-glow' : ''
-                }`}
-                style={{ top: '140px', left: '0px', width: '280px', minHeight: '200px' }}
-                onMouseEnter={() => setHoveredCard('management')}
-                onMouseLeave={() => setHoveredCard(null)}
-              >
-                <h2 className="text-6xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Anton, sans-serif' }}>01.</h2>
-                <h3 className="text-xl font-bold text-blue-600 mb-3" style={{ fontFamily: 'Anton, sans-serif' }}>Management</h3>
-                <p className="text-gray-500 text-sm leading-relaxed" style={{ fontFamily: 'Anton, sans-serif' }}>
-                  A wonderful serenity has taken possession of my entire
-                </p>
               </div>
             </div>
 

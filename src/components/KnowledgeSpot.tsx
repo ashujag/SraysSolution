@@ -169,7 +169,7 @@ const KnowledgeSpot = () => {
         {/* Header */}
         <div className="mb-12">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 header-title anton-font">
-            <span className="sacramento-font text-5xl md:text-6xl italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">
+            <span className="Anton-font text-5xl md:text-6xl italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">
               Knowledge
             </span>{" "}
             <span className="text-gray-900">Spot</span>
