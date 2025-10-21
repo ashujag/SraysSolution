@@ -277,7 +277,7 @@ const WhyUs: React.FC = () => {
                 <div className="decor-title vibe mb-4 md:mb-6">
                   <h2 
                     className="text-lime-400 text-4xl md:text-6xl font-bold"
-                    style={{ fontFamily: "'Butler', serif" }}
+                    style={{ fontFamily: "'Anton', sans-serif" }}
                   >
                     Why Us!
                   </h2>

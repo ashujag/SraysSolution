@@ -429,9 +429,9 @@ const SkillSection = () => {
       </div>
 
       {/* URL */}
-      <div style={styles.url}>
+      {/* <div style={styles.url}>
         https://srays-hrms.webflow.io/services
-      </div>
+      </div> */}
     </div>
   );
 };

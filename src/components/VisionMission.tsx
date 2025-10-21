@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const VisionMission: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  // const textRef = useRef<HTMLDivElement>(null);
+  // const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observerOptions = {
@@ -11,40 +11,40 @@ const VisionMission: React.FC = () => {
       rootMargin: '0px'
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      });
-    }, observerOptions);
+    // const observer = new IntersectionObserver((entries) => {
+    //   entries.forEach(entry => {
+    //     if (entry.isIntersecting) {
+    //       setIsVisible(true);
+    //     }
+    //   });
+    // }, observerOptions);
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    // if (sectionRef.current) {
+    //   observer.observe(sectionRef.current);
+    // }
 
-    return () => observer.disconnect();
+    // return () => observer.disconnect();
   }, []);
 
   return (
     <>
       <div
         ref={sectionRef}
-        className="relative w-full min-h-screen py-20 px-8"
+        className="relative w-full py-10 px-8"
         style={{
           background:
             "linear-gradient(180deg, rgba(6, 78, 59, 0.8) 0%, rgba(5, 46, 38, 0.9) 50%, rgba(4, 28, 24, 1) 100%)",
         }}
       >
         {/* Decorative gradient blur at top */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-40 bg-gradient-to-b from-white/10 to-transparent blur-2xl"></div>
+        {/* <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-40 bg-gradient-to-b from-white/10 to-transparent blur-2xl"></div> */}
 
         {/* Main Content */}
-        <div
+        {/* <div
           ref={textRef}
           className="relative z-10 max-w-6xl mx-auto text-center text-white py-16"
         >
-          {/* Vision Section */}
+          
           <div className="mb-16 overflow-hidden">
             <h2
               className={`text-5xl md:text-7xl font-black uppercase mb-6 transition-all duration-1000 ease-out ${
@@ -78,7 +78,7 @@ const VisionMission: React.FC = () => {
             </p>
           </div>
 
-          {/* Divider Line with Animation */}
+        
           <div className="flex items-center justify-center gap-4 my-12">
             <div
               className={`h-1 bg-gradient-to-r from-transparent to-lime-400 transition-all duration-1000 ease-out ${
@@ -100,7 +100,6 @@ const VisionMission: React.FC = () => {
             ></div>
           </div>
 
-          {/* Mission Section */}
           <div className="mb-12 overflow-hidden">
             <h2
               className={`text-5xl md:text-7xl font-black uppercase mb-6 transition-all duration-1000 ease-out delay-400 ${
@@ -146,11 +145,11 @@ const VisionMission: React.FC = () => {
             }}
           >
             LEARN MORE ABOUT US
-          </button> */}
-        </div>
+          </button> 
+        </div> */}
 
         {/* Scrolling Logo Carousel */}
-        <div className="relative mt-20 overflow-hidden">
+        <div className="relative overflow-hidden">
           <div className="flex animate-scroll whitespace-nowrap">
             {/* First set of logos */}
             <div className="flex items-center gap-20 px-10">

@@ -104,8 +104,8 @@ const AboutUs = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   return (
-    <div id ="about"
-     className="bg-white p-2 md:p-4 relative overflow-hidden" style={{ fontFamily: 'Anton, sans-serif' }}>
+    <div id="about"
+     className="bg-white p-2 md:p-4 min-h-[600px] relative overflow-hidden flex items-center justify-center" style={{ fontFamily: 'Anton, sans-serif' }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
         
@@ -140,9 +140,9 @@ const AboutUs = () => {
       <div className="absolute top-0 left-0 w-32 md:w-64 h-32 md:h-64 bg-blue-500 rounded-full filter blur-3xl opacity-30"></div>
       <div className="absolute bottom-0 left-0 w-32 md:w-64 h-32 md:h-64 bg-cyan-400 rounded-full filter blur-3xl opacity-30"></div>
       
-      <div className="max-w-6xl mx-auto relative">
+      <div className="max-w-6xl mx-auto relative w-full px-4 md:px-8">
         {/* Logo */}
-        <div className="mb-4 md:mb-6">
+        <div className="mb-4 md:mb-6 flex justify-center lg:justify-start">
           <div className="flex items-center gap-2">
             <svg width="28" height="28" viewBox="0 0 40 40" fill="none" className="md:w-8 md:h-8">
               <path d="M20 5C11.716 5 5 11.716 5 20C5 28.284 11.716 35 20 35" stroke="#06B6D4" strokeWidth="3" strokeLinecap="round"/>
@@ -151,27 +151,27 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
-          <div className="pt-2 md:pt-4">
+          <div className="pt-2 md:pt-4 text-center lg:text-left">
             <h1 className="text-2xl md:text-4xl font-bold leading-tight mb-3" style={{ fontFamily: 'Anton, sans-serif' }}>
               About Us
             </h1>
-            <h2 className="text-lg md:text-xl font-bold text-blue-600 mb-2" style={{ fontFamily: 'Anton, sans-serif' }}>
+            <h2 className="text-lg md:text-xl font-bold text-blue-600 mb-4" style={{ fontFamily: 'Anton, sans-serif' }}>
               We are awesome team work for your business dream
             </h2>
-            <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-2" style={{ fontFamily: 'Anton, sans-serif' }}>
+            <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-3 text-justify" style={{ fontFamily: 'Anton, sans-serif' }}>
               "SRays" is an HR outsourcing firm incorporated by skilled and proficient wizards in the field of Human Resources aiming to Virtualize the HR Process. We have professionals who are actively exercising Human Resources practices in the Industry, by providing up-to-date sophisticated HR solutions and HRMS (Human Resource Management System) software, IT services to start ups, SMEs, Family Based businesses and Corporates.
             </p>
-            <p className="text-gray-700 text-xs md:text-sm leading-relaxed" style={{ fontFamily: 'Anton, sans-serif' }}>
+            <p className="text-gray-700 text-xs md:text-sm leading-relaxed text-justify" style={{ fontFamily: 'Anton, sans-serif' }}>
               As a contribution towards Students community, we are conducting some HR Skill Development Programs for helping them to Up-Skill their knowledge towards the Industrial requirements. Also we conduct Technical Skill Development Programs for HR Professionals and Entrepreneurs.
             </p>
           </div>
 
           {/* Right Content - Service Cards */}
-          <div className="relative">
+          <div className="relative flex justify-center lg:justify-start">
             {/* Card Stack - Desktop Layout */}
-            <div className="hidden lg:block relative" style={{ height: '380px' }}>
+            <div className="hidden lg:block relative" style={{ height: '380px', width: '340px' }}>
               {/* Website Development Card - Blue - Top Left */}
               <div 
                 className={`card-hover absolute bg-blue-600 text-white p-4 rounded-xl shadow-lg cursor-pointer ${
@@ -280,7 +280,7 @@ const AboutUs = () => {
             </div>
 
             {/* Mobile Layout - Stacked Cards */}
-            <div className="lg:hidden space-y-2">
+            <div className="lg:hidden space-y-3 w-full max-w-md mx-auto">
               {/* Management Card */}
               <div 
                 className={`card-hover bg-white p-5 rounded-lg shadow-xl border border-gray-100 cursor-pointer ${

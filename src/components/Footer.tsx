@@ -1,5 +1,3 @@
-import logoheader from '../assets/logoheader.png';
-
 const Footer = () => {
   // Smooth scroll function
   const scrollToSection = (id: string) => {
@@ -19,7 +17,7 @@ const Footer = () => {
       `}</style>
 
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Company Info with Logo */}
           <div className="col-span-1">
             <div className="mb-4">
@@ -31,13 +29,11 @@ const Footer = () => {
                 cutting-edge IT services, and creative design expertise.
               </p>
             </div>
-            <div className="flex justify-start">
+            {/* <div className="flex justify-start">
               <img src={logoheader} alt="SRays Solutions Logo" className="h-10" />
-            </div>
+            </div> */}
           </div>
 
-          {/* Empty spacer column */}
-          <div></div>
 
           {/* Quick Links */}
           <div>
