@@ -336,7 +336,7 @@ export default function ContactPage() {
             </div>
 
             {/* Company Column */}
-            <div>
+            {/* <div>
               <p className="text-xs font-bold text-black mb-4 anton-font">
                 COMPANY
               </p>
@@ -345,10 +345,10 @@ export default function ContactPage() {
                 <p className="text-xs text-gray-600 anton-font">ABOUT US</p>
                 <p className="text-xs text-gray-600 anton-font">BLOG</p>
               </div>
-            </div>
+            </div> */}
 
             {/* Other Pages Column */}
-            <div>
+            {/* <div>
               <p className="text-xs font-bold text-black mb-4 anton-font">
                 OTHER PAGES
               </p>
@@ -358,11 +358,12 @@ export default function ContactPage() {
                 <p className="text-xs text-gray-600 anton-font">CONTACT US</p>
                 <p className="text-xs text-gray-600 anton-font">LICENSE</p>
               </div>
-            </div>
-
+            </div> */}
+             <div></div>
+             <div></div>
             {/* Right Column */}
             <div>
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-4 mb-4">
                 <div className="w-10 h-10 rounded-full bg-amber-900 flex-shrink-0"></div>
                 <div className="min-w-0">
                   <p className="text-xs font-bold text-black anton-font">

@@ -255,7 +255,7 @@ const Portfolio = () => {
                 </div>
               </div>
 
-              {/* Mobile Dots */}
+              {/* Mobile Dots - Changed to White */}
               <div className="flex justify-center mt-8 md:hidden gap-2">
                 {testimonials.map((_, index) => (
                   <button
@@ -263,8 +263,8 @@ const Portfolio = () => {
                     onClick={() => goToSlide(index)}
                     className={`rounded-full transition-all duration-300 ${
                       index === currentSlide 
-                        ? "bg-[#ff4444] w-10 h-3" 
-                        : "bg-white/50 w-3 h-3 hover:bg-white/70"
+                        ? "bg-white w-10 h-3 shadow-lg" 
+                        : "bg-gray-300 w-3 h-3 hover:bg-gray-400"
                     }`}
                   />
                 ))}

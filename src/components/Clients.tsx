@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ksreiImage from '../assets/ksrei_v1.jpg';
 import sairamgroupImage from '../assets/sairamgroup_v1.png';
 import backgroundImage from '../assets/6847119f22b5391772dbf625_684efaff0f6e64c09d96d807_freepik__animate-this-with-8k-loop__54302-poster-00001.jpg';
@@ -6,15 +6,10 @@ import backgroundImage from '../assets/6847119f22b5391772dbf625_684efaff0f6e64c0
 export default function ClientsShowcase() {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    setIsVisible(true);
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+ const autoSlideInterval = useRef<ReturnType<typeof window.setInterval> | null>(null);
 
   const clients = [
     {
@@ -30,6 +25,62 @@ export default function ClientsShowcase() {
       color: 'purple'
     }
   ];
+
+  useEffect(() => {
+    setIsVisible(true);
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Auto slide for mobile
+  useEffect(() => {
+    if (window.innerWidth < 1024) {
+      startAutoSlide();
+    }
+    return () => {
+      if (autoSlideInterval.current) {
+        clearInterval(autoSlideInterval.current);
+      }
+    };
+  }, [currentSlide]);
+
+  const startAutoSlide = () => {
+    if (autoSlideInterval.current) {
+      clearInterval(autoSlideInterval.current);
+    }
+    autoSlideInterval.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % clients.length);
+    }, 3000); // Auto slide every 3 seconds
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      setCurrentSlide((prev) => (prev + 1) % clients.length);
+    }
+    if (isRightSwipe) {
+      setCurrentSlide((prev) => (prev - 1 + clients.length) % clients.length);
+    }
+
+    // Reset auto slide timer after manual swipe
+    startAutoSlide();
+  };
 
   return (
     <div
@@ -176,8 +227,8 @@ export default function ClientsShowcase() {
           </svg>
         </div>
 
-        {/* Mobile & Tablet Layout - Stacked Cards */}
-        <div className="lg:hidden w-full max-w-2xl space-y-6 sm:space-y-8 pb-12">
+        {/* Mobile & Tablet Layout - Swiper */}
+        <div className="lg:hidden w-full max-w-2xl pb-12">
           
           {/* Floating 3D Cube - Mobile */}
           <div className="flex justify-center mb-6 sm:mb-8">
@@ -201,44 +252,74 @@ export default function ClientsShowcase() {
             </div>
           </div>
 
-          {/* Client Cards - Mobile Stacked */}
-          {clients.map((client, index) => (
-            <div
-              key={index}
-              className="w-full"
+          {/* Swiper Container */}
+          <div 
+            className="relative overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div 
+              className="flex transition-transform duration-500 ease-out"
               style={{
-                animation: isVisible ? `slideInUp 1s ease-out ${0.4 + index * 0.2}s both` : 'none'
+                transform: `translateX(-${currentSlide * 100}%)`
               }}
             >
-              <div className="bg-white/95 backdrop-blur-md text-black p-5 sm:p-6 md:p-8 rounded-2xl shadow-2xl border border-gray-200 client-card-hover-effect">
-                <div className="mb-3 sm:mb-4">
-                  <span className={`text-xs sm:text-sm font-bold ${index === 0 ? 'text-teal-600' : 'text-purple-600'}`}>
-                    Client 0{index + 1}
-                  </span>
+              {clients.map((client, index) => (
+                <div
+                  key={index}
+                  className="w-full flex-shrink-0 px-4"
+                >
+                  <div className="bg-white/95 backdrop-blur-md text-black p-5 sm:p-6 md:p-8 rounded-2xl shadow-2xl border border-gray-200 client-card-hover-effect">
+                    <div className="mb-3 sm:mb-4">
+                      <span className={`text-xs sm:text-sm font-bold ${index === 0 ? 'text-teal-600' : 'text-purple-600'}`}>
+                        Client 0{index + 1}
+                      </span>
+                    </div>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-black tracking-wide mb-3 sm:mb-4">
+                      {client.name}
+                    </h3>
+                    <div className="w-full h-40 sm:h-48 md:h-56 rounded-lg overflow-hidden mb-3 sm:mb-4 bg-gray-200">
+                      <div
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          backgroundImage: `url('${client.image}')`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center'
+                        }}
+                      />
+                    </div>
+                    <p className="text-xs sm:text-sm leading-relaxed text-gray-600">
+                      {index === 0 
+                        ? 'Leading educational institution dedicated to delivering excellence in academics and digital transformation.'
+                        : 'Premier educational group fostering innovation and excellence in higher education globally.'
+                      }
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-black tracking-wide mb-3 sm:mb-4">
-                  {client.name}
-                </h3>
-                <div className="w-full h-40 sm:h-48 md:h-56 rounded-lg overflow-hidden mb-3 sm:mb-4 bg-gray-200">
-                  <div
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      backgroundImage: `url('${client.image}')`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center'
-                    }}
-                  />
-                </div>
-                <p className="text-xs sm:text-sm leading-relaxed text-gray-600">
-                  {index === 0 
-                    ? 'Leading educational institution dedicated to delivering excellence in academics and digital transformation.'
-                    : 'Premier educational group fostering innovation and excellence in higher education globally.'
-                  }
-                </p>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Pagination Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {clients.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setCurrentSlide(index);
+                  startAutoSlide();
+                }}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  currentSlide === index 
+                    ? 'bg-teal-500 w-6' 
+                    : 'bg-gray-400'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
