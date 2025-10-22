@@ -110,13 +110,13 @@ const StatsSection = () => {
             <div className="text-left">
               <div className="mb-2">
                 <h2 
-                  className={`text-6xl sm:text-7xl md:text-8xl text-[#ff4444] inline-block ${isVisible ? 'slide-up' : ''}`}
+                  className={`text-6xl sm:text-7xl md:text-7xl text-[#ff4444] inline-block ${isVisible ? 'slide-up' : ''}`}
                   style={{ 
                     fontFamily: 'Sacramento, cursive',
                     fontWeight: 400
                   }}
                 >
-                  States
+                  Stats
                 </h2>
               </div>
               <h3 

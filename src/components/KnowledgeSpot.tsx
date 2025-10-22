@@ -237,10 +237,10 @@ const KnowledgeSpot = () => {
         {/* Header */}
         <div className="mb-12">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 header-title anton-font">
-            <span className="Anton-font text-5xl md:text-6xl italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">
+            <span className="Anton-font text-5xl md:text-6xl italic text-black">
               Knowledge
             </span>{" "}
-            <span className="text-gray-900">Spot</span>
+            <span className="text-[#c8f346]">Spot</span>
           </h2>
           <p className="text-gray-500 text-sm mb-2 header-subtitle anton-font">
           </p>
@@ -337,7 +337,7 @@ const KnowledgeSpot = () => {
                 transform: `translateX(-${currentSlide * 100}%)`,
               }}
             >
-              {knowledgeItems.map((item, index) => (
+              {knowledgeItems.map((item) => (
                 <div
                   key={item.id}
                   className="w-full flex-shrink-0 px-2"

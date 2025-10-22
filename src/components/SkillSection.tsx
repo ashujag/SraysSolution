@@ -456,7 +456,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     gap: 'clamp(15px, 4vw, 40px)',
   },
   topCities: {
-    fontFamily: 'Butler, serif',
+    fontFamily: 'Anton, sans-serif',
     fontSize: 'clamp(24px, 7vw, 52px)',
     color: '#1a1a1a',
     fontWeight: '400',

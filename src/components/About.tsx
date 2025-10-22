@@ -151,13 +151,13 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center justify-center">
           {/* Left Content */}
           <div className="pt-2 md:pt-4 text-center lg:text-left">
             <h1 className="text-2xl md:text-4xl font-bold leading-tight mb-3" style={{ fontFamily: 'Anton, sans-serif' }}>
               About Us
             </h1>
-            <h2 className="text-lg md:text-xl font-bold text-blue-600 mb-4" style={{ fontFamily: 'Anton, sans-serif' }}>
+            <h2 className="text-lg md:text-xl font-bold text-lime-500 mb-4" style={{ fontFamily: 'Anton, sans-serif' }}>
               We are awesome team work for your business dream
             </h2>
             <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-3 text-justify" style={{ fontFamily: 'Anton, sans-serif' }}>
@@ -169,7 +169,7 @@ const AboutUs = () => {
           </div>
 
           {/* Right Content - Service Cards */}
-          <div className="relative flex justify-center lg:justify-start">
+          <div className="relative flex justify-center lg:justify-start items-center">
             {/* Card Stack - Desktop Layout */}
             <div className="hidden lg:block relative" style={{ height: '380px', width: '340px' }}>
               {/* Website Development Card - Blue - Top Left */}

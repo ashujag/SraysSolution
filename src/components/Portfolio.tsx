@@ -148,7 +148,7 @@ const Portfolio = () => {
           <div className="text-center mb-16 slide-in">
             <h2 className="inline-block">
               <span 
-                className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#ff4444] inline-block floating"
+                className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#c8f346] inline-block floating"
                 style={{ 
                   fontFamily: 'Anton, sans-serif',
                   fontWeight: 400

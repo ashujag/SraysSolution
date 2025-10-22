@@ -765,7 +765,7 @@ const HeroSection: React.FC = () => {
           <div className="text-center max-w-4xl md:max-w-5xl">
             <div
               ref={subtitleRef}
-              className="text-xl md:text-5xl lg:text-6xl font-light mb-4 md:mb-6 transition-all duration-700 ease-out"
+              className="text-xl md:text-2xl lg:text-4xl font-light mb-4 md:mb-6 transition-all duration-700 ease-out"
               style={{
                 opacity: 0,
                 transform: "translateY(30px)",
@@ -773,7 +773,7 @@ const HeroSection: React.FC = () => {
               }}
             >
               <span className="text-lime-300 block md:inline">
-                Design an optimal business model to reach Your{" "}
+                Design an optimal business model to <br /> reach Your{" "}
               </span>
               <span
                 className={`inline-block transition-all duration-500 ease-in-out ${rotatingTexts[rotatingTextIndex].color}`}
@@ -789,7 +789,7 @@ const HeroSection: React.FC = () => {
 
             <h1
               ref={titleRef}
-              className="text-2xl md:text-6xl lg:text-7xl font-black uppercase leading-tight mb-6 md:mb-8 transition-all duration-1000 ease-out px-2 md:px-0"
+              className="text-2xl md:text-3xl lg:text-6xl font-black uppercase leading-tight mb-6 md:mb-8 transition-all duration-1000 ease-out px-2 md:px-0"
               style={{
                 opacity: 0,
                 transform: "translateY(40px)",

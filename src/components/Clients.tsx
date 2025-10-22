@@ -100,12 +100,12 @@ export default function ClientsShowcase() {
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-12 lg:py-0">
         
         {/* Clients Header */}
-        <div className="text-center mb-3 sm:mb-4">
+        <div className="text-center pt-20 mb-3 sm:mb-4">
           <h2
             className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tight"
             style={{
               fontFamily: 'Bebas Neue, sans-serif',
-              color: '#ff0000',
+              color: '#c8f346',
               animation: isVisible ? 'slideInDown 0.8s ease-out' : 'none',
               opacity: isVisible ? 1 : 0,
               textShadow: '0 4px 20px rgba(255, 0, 0, 0.3)'
