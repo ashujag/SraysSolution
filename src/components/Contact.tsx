@@ -16,6 +16,7 @@ export default function ContactPage() {
 
   // Validation state
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [subscriberEmailError, setSubscriberEmailError] = useState<string>("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,6 +26,9 @@ export default function ContactPage() {
 
     // Clear error as user types
     setErrors((prev) => ({ ...prev, [name]: "" }));
+    if (name === "subscriberEmail") {
+      setSubscriberEmailError("");
+    }
   };
 
   const validateForm = () => {
@@ -74,6 +78,19 @@ export default function ContactPage() {
       if (firstErrorField) {
         firstErrorField.scrollIntoView({ behavior: "smooth", block: "center" });
       }
+    }
+  };
+
+  const handleNewsletterSubmit = () => {
+    if (!formData.subscriberEmail.trim()) {
+      setSubscriberEmailError("Please enter your email");
+    } else if (!/\S+@\S+\.\S+/.test(formData.subscriberEmail)) {
+      setSubscriberEmailError("Email is invalid");
+    } else {
+      console.log("Newsletter subscribed:", formData.subscriberEmail);
+      alert("Newsletter subscribed successfully!");
+      setFormData((prev) => ({ ...prev, subscriberEmail: "" }));
+      setSubscriberEmailError("");
     }
   };
 
@@ -284,9 +301,12 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
             {/* Phone */}
             <div className="flex items-start gap-4">
-              <div className="bg-yellow-300 rounded-full p-3 flex-shrink-0">
+              <a 
+                href="tel:044-42735893"
+                className="bg-yellow-300 rounded-full p-3 flex-shrink-0 cursor-pointer hover:bg-yellow-400 transition"
+              >
                 <Phone className="w-6 h-6 text-black" />
-              </div>
+              </a>
               <div className="min-w-0 flex-1">
                 <p className="font-bold text-black anton-font">PHONE</p>
                 <p className="text-sm text-gray-600 anton-font break-words">044-42735893</p>
@@ -295,9 +315,12 @@ export default function ContactPage() {
 
             {/* Mail */}
             <div className="flex items-start gap-4">
-              <div className="bg-yellow-300 rounded-full p-3 flex-shrink-0">
+              <a 
+                href="mailto:hr@srayssolutions.in"
+                className="bg-yellow-300 rounded-full p-3 flex-shrink-0 cursor-pointer hover:bg-yellow-400 transition"
+              >
                 <Mail className="w-6 h-6 text-black" />
-              </div>
+              </a>
               <div className="min-w-0 flex-1">
                 <p className="font-bold text-black anton-font">MAIL</p>
                 <p className="text-sm text-gray-600 anton-font break-words">
@@ -307,17 +330,23 @@ export default function ContactPage() {
             </div>
 
             {/* Address */}
-            <div className="flex items-start gap-4">
-              <div className="bg-yellow-300 rounded-full p-3 flex-shrink-0">
-                <MapPin className="w-6 h-6 text-black" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="font-bold text-black anton-font">ADDRESS</p>
-                <p className="text-sm text-gray-600 anton-font break-words">
-                  7, Sairam street, Jalladampet, Chennai-600100
-                </p>
-              </div>
-            </div>
+            {/* Address */}
+<div className="flex items-start gap-4">
+  <a 
+    href="https://maps.app.goo.gl/WWe5QbaddefFKW8D8"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-yellow-300 rounded-full p-3 flex-shrink-0 cursor-pointer hover:bg-yellow-400 transition"
+  >
+    <MapPin className="w-6 h-6 text-black" />
+  </a>
+  <div className="min-w-0 flex-1">
+    <p className="font-bold text-black anton-font">ADDRESS</p>
+    <p className="text-sm text-gray-600 anton-font break-words">
+      7, Sairam street, Jalladampet, Chennai-600100
+    </p>
+  </div>
+</div>
           </div>
         </div>
       </div>
@@ -332,7 +361,7 @@ export default function ContactPage() {
               <p className="text-xs text-gray-600 mb-4 anton-font">
                 THINKING YOUR DREAMS WITH HUM IDEAS
               </p>
-              <p className="text-xs font-bold text-black anton-font">© CLICK</p>
+              {/* <p className="text-xs font-bold text-black anton-font">© CLICK</p> */}
             </div>
 
             {/* Company Column */}
@@ -364,7 +393,7 @@ export default function ContactPage() {
             {/* Right Column */}
             <div>
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-10 h-10 rounded-full bg-amber-900 flex-shrink-0"></div>
+                {/* <div className="w-10 h-10 rounded-full bg-amber-900 flex-shrink-0"></div> */}
                 <div className="min-w-0">
                   <p className="text-xs font-bold text-black anton-font">
                     RICH JOHNSON
@@ -381,7 +410,11 @@ export default function ContactPage() {
           </div>
 
           {/* CTA Button with Hover Animation */}
-          <div className="bg-lime-400 rounded-full py-6 px-8 text-center mb-16 flex items-center justify-center gap-3 cursor-pointer transition-all duration-300 group overflow-hidden">
+          {/* CTA Button with Hover Animation */}
+          <div 
+            onClick={() => window.location.href = 'mailto:hr@srayssolutions.in'}
+            className="bg-lime-400 rounded-full py-6 px-8 text-center mb-16 flex items-center justify-center gap-3 cursor-pointer transition-all duration-300 group overflow-hidden"
+          >
             <MessageSquare className="w-6 h-6 text-black transition-transform duration-300 group-hover:rotate-12 flex-shrink-0" />
             <div className="relative w-full md:w-[230px] text-xl md:text-2xl font-bold text-black anton-font h-8 flex items-center justify-center">
               {/* Default text */}
@@ -407,20 +440,26 @@ export default function ContactPage() {
               <div className="flex gap-2">
                 <input
                   type="email"
+                  name="subscriberEmail"
                   placeholder="ENTER YOUR EMAIL"
                   value={formData.subscriberEmail}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      subscriberEmail: e.target.value,
-                    }))
-                  }
-                  className="flex-1 border-b-2 border-black bg-white px-2 py-1 text-xs outline-none anton-font"
+                  onChange={handleChange}
+                  className={`flex-1 border-b-2 border-black bg-white px-2 py-1 text-xs outline-none anton-font ${
+                    subscriberEmailError ? "border-red-500" : ""
+                  }`}
                 />
-                <button className="text-black font-bold text-xs anton-font">
-                  →
+                <button
+                  onClick={handleNewsletterSubmit}
+                  className="text-black font-bold text-xs anton-font px-4 py-2 bg-lime-400 rounded-full hover:bg-lime-500 transition"
+                >
+                  Submit
                 </button>
               </div>
+              {subscriberEmailError && (
+                <p className="text-red-500 text-xs mt-1">
+                  {subscriberEmailError}
+                </p>
+              )}
             </div>
 
             {/* Scroll to Top Button */}

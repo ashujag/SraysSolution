@@ -141,7 +141,37 @@ const KnowledgeSpot = () => {
   };
 
   const toggleVideo = (videoId: string) => {
+    // Stop all videos before toggling by using YouTube API
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach((iframe) => {
+      try {
+        iframe.contentWindow?.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+      } catch (e) {
+        // Fallback: reset src if postMessage fails
+        const src = iframe.src;
+        iframe.src = '';
+        iframe.src = src.replace('autoplay=1', 'autoplay=0');
+      }
+    });
+    
     setSelectedVideoId((prev) => (prev === videoId ? null : videoId));
+  };
+
+  const closeVideo = () => {
+    // Stop all videos when closing using YouTube API
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach((iframe) => {
+      try {
+        iframe.contentWindow?.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+      } catch (e) {
+        // Fallback: reset src if postMessage fails
+        const src = iframe.src;
+        iframe.src = '';
+        iframe.src = src.replace('autoplay=1', 'autoplay=0');
+      }
+    });
+    
+    setSelectedVideoId(null);
   };
 
   return (
@@ -235,7 +265,7 @@ const KnowledgeSpot = () => {
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-12 text-center">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 header-title anton-font">
             <span className="Anton-font text-5xl md:text-6xl italic text-black">
               Knowledge
@@ -244,7 +274,7 @@ const KnowledgeSpot = () => {
           </h2>
           <p className="text-gray-500 text-sm mb-2 header-subtitle anton-font">
           </p>
-          <p className="text-gray-600 max-w-3xl header-description anton-font">
+          <p className="text-gray-600 max-w-3xl mx-auto text-center header-description anton-font">
             News websites and blogs are common sources for web feeds, but feeds
             are also used to deliver structured
           </p>
@@ -267,7 +297,7 @@ const KnowledgeSpot = () => {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        setSelectedVideoId(null);
+                        closeVideo();
                       }}
                       className="absolute top-2 right-2 bg-black/60 hover:bg-black text-white rounded-full p-1 transition z-10"
                     >
@@ -277,7 +307,7 @@ const KnowledgeSpot = () => {
                     {/* Embedded Video */}
                     <iframe
                       className="absolute inset-0 w-full h-full rounded-lg"
-                      src={`https://www.youtube.com/embed/${item.videoId}?autoplay=1`}
+                      src={`https://www.youtube.com/embed/${item.videoId}?autoplay=1&enablejsapi=1&controls=1&modestbranding=1&rel=0&showinfo=0`}
                       title={item.title}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -353,7 +383,7 @@ const KnowledgeSpot = () => {
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
-                              setSelectedVideoId(null);
+                              closeVideo();
                             }}
                             className="absolute top-2 right-2 bg-black/60 hover:bg-black text-white rounded-full p-1 transition z-10"
                           >
@@ -363,7 +393,7 @@ const KnowledgeSpot = () => {
                           {/* Embedded Video */}
                           <iframe
                             className="absolute inset-0 w-full h-full rounded-lg"
-                            src={`https://www.youtube.com/embed/${item.videoId}?autoplay=1`}
+                            src={`https://www.youtube.com/embed/${item.videoId}?autoplay=1&enablejsapi=1&controls=1&modestbranding=1&rel=0&showinfo=0`}
                             title={item.title}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
