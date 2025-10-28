@@ -752,7 +752,7 @@ const HeroSection: React.FC = () => {
         {/* Navigation */}
         <nav className="relative z-20 flex items-center justify-between px-4 md:px-8 py-4 md:py-6 text-white">
           <div className="flex items-center">
-            <img src={logoheader} alt="Srays Logo" className="h-8 md:h-10" />
+            <img src={logoheader} alt="Srays Logo" className="h-12 md:h-16" />
           </div>
         </nav>
 
@@ -765,7 +765,7 @@ const HeroSection: React.FC = () => {
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-lime-400 rounded-full flex-shrink-0"></span>
-              <span className="whitespace-nowrap">HELLO@srayssolutions.com</span>
+              <span className="whitespace-nowrap">hr@srayssolutions.in</span>
             </div>
           </div>
         </div>
@@ -820,9 +820,9 @@ const HeroSection: React.FC = () => {
             <button
               ref={ctaRef}
               onClick={() => {
-                const homeSection = document.getElementById("home");
-                if (homeSection) {
-                  homeSection.scrollIntoView({ behavior: "smooth" });
+                const contactSection = document.getElementById("contact");
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: "smooth" });
                 }
               }}
               className="bg-lime-400 text-black px-8 md:px-12 py-3 md:py-4 rounded-full text-sm md:text-lg font-bold uppercase hover:bg-lime-300 transition-all duration-300 hover:scale-105"
@@ -832,7 +832,7 @@ const HeroSection: React.FC = () => {
                 fontFamily: "Anton, sans-serif",
               }}
             >
-              Learn More
+              Get started
             </button>
           </div>
         </div>

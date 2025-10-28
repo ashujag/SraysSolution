@@ -137,7 +137,7 @@ const Portfolio = () => {
       
       <div
         id="portfolio"
-        className="min-h-screen bg-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+        className="bg-white py-6 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       >
         {/* Background Decorative Elements */}
         <div className="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
@@ -145,10 +145,10 @@ const Portfolio = () => {
         
         <div className="max-w-6xl mx-auto">
           {/* Title Section */}
-          <div className="text-center mb-16 slide-in">
+          <div className="text-center mb-4 slide-in">
             <h2 className="inline-block">
               <span 
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#c8f346] inline-block floating"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#c8f346] inline-block floating"
                 style={{ 
                   fontFamily: 'Anton, sans-serif',
                   fontWeight: 400
@@ -158,7 +158,7 @@ const Portfolio = () => {
               </span>
             </h2>
             <h3 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase text-[#2c3e50] mt-2"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase text-[#2c3e50] mt-1"
               style={{ 
                 fontFamily: 'Anton, sans-serif',
                 fontWeight: 400,
@@ -177,10 +177,10 @@ const Portfolio = () => {
               onMouseLeave={() => setIsHovered(false)}
             >
               {/* Main Image Card */}
-              <div className="bg-white/90 backdrop-blur-sm rounded-[3rem] shadow-2xl overflow-hidden mb-8 p-4 sm:p-6 md:p-8 card-3d">
-                <div className="overflow-hidden rounded-3xl shadow-2xl shine-effect relative">
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden mb-4 p-2 sm:p-3 md:p-4 lg:p-5 card-3d">
+                <div className="overflow-hidden rounded-2xl shadow-2xl shine-effect relative">
                   {/* Image with Ken Burns effect */}
-                  <div className="relative overflow-hidden" style={{ paddingBottom: '56.25%' }}>
+                  <div className="relative overflow-hidden" style={{ paddingBottom: '45%' }}>
                     <img
                       key={currentSlide}
                       src={testimonials[currentSlide].image}
@@ -190,9 +190,9 @@ const Portfolio = () => {
                   </div>
                   
                   {/* Image Counter Overlay */}
-                  <div className="absolute top-6 right-6 bg-black/70 backdrop-blur-md px-6 py-3 rounded-full">
+                  <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-4 py-1.5 rounded-full">
                     <span 
-                      className="text-white text-2xl font-bold"
+                      className="text-white text-base md:text-lg font-bold"
                       style={{ fontFamily: 'Anton, sans-serif' }}
                     >
                       {String(currentSlide + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}

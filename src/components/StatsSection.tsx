@@ -150,7 +150,7 @@ const StatsSection = () => {
                 </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 flex-1">
                   <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-                    <NumberRoller digits={[2, 3, 0]} suffix="+" />
+                    <NumberRoller digits={[1,0]} suffix="+" />
                   </div>
                   <span 
                     className="text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight text-[#2c3e50]"
@@ -166,7 +166,7 @@ const StatsSection = () => {
               </div>
 
               {/* Card 2 - $1.4B+ */}
-              <div className="bg-white rounded-[2rem] px-6 sm:px-8 py-6 sm:py-7 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 shadow-lg">
+              {/* <div className="bg-white rounded-[2rem] px-6 sm:px-8 py-6 sm:py-7 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 shadow-lg">
                 <div className="flex-shrink-0">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden">
                     <img 
@@ -195,7 +195,7 @@ const StatsSection = () => {
                     Global Clientele
                   </span>
                 </div>
-              </div>
+              </div> */}
 
               {/* Card 3 - 856+ */}
               <div className="bg-white rounded-[2rem] px-6 sm:px-8 py-6 sm:py-7 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 shadow-lg">
@@ -210,7 +210,7 @@ const StatsSection = () => {
                 </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 flex-1">
                   <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-                    <NumberRoller digits={[8, 5, 6]} suffix="+" />
+                    <NumberRoller digits={[1,0]} suffix="+" />
                   </div>
                   <span 
                     className="text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight text-[#2c3e50]"
@@ -238,7 +238,7 @@ const StatsSection = () => {
                 </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 flex-1">
                   <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-                    <NumberRoller digits={[2, 8]} suffix="%" />
+                    <NumberRoller digits={[1,0]} suffix="%" />
                   </div>
                   <span 
                     className="text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight text-[#2c3e50]"

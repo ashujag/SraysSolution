@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Mail, Phone, MapPin, MessageSquare } from "lucide-react";
-import bgImage from "../assets/6847119f22b5391772dbf625_684efaff0f6e64c09d96d807_freepik__animate-this-with-8k-loop__54302-poster-00001.jpg";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -15,12 +14,10 @@ export default function ContactPage() {
   });
 
   // Validation state
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [subscriberEmailError, setSubscriberEmailError] = useState<string>("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [subscriberEmailError, setSubscriberEmailError] = useState("");
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
@@ -32,7 +29,7 @@ export default function ContactPage() {
   };
 
   const validateForm = () => {
-    const newErrors: { [key: string]: string } = {};
+    const newErrors: Record<string, string> = {};
 
     if (!formData.firstName.trim()) {
       newErrors.firstName = "Please enter your first name";
@@ -99,9 +96,7 @@ export default function ContactPage() {
       });
     } else {
       // Scroll to first error
-      const firstErrorField = document.querySelector<
-        HTMLInputElement | HTMLTextAreaElement
-      >(".error");
+      const firstErrorField = document.querySelector(".error");
       if (firstErrorField) {
         firstErrorField.scrollIntoView({ behavior: "smooth", block: "center" });
       }
@@ -113,7 +108,10 @@ export default function ContactPage() {
       setSubscriberEmailError("Please enter your email");
     } else if (!/\S+@\S+\.\S+/.test(formData.subscriberEmail)) {
       setSubscriberEmailError("Email is invalid");
-    } else {
+    } else if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(formData.subscriberEmail)) {
+      setSubscriberEmailError("Only Gmail addresses are allowed");
+    }
+    else {
       console.log("Newsletter subscribed:", formData.subscriberEmail);
       alert("Newsletter subscribed successfully!");
       setFormData((prev) => ({ ...prev, subscriberEmail: "" }));
@@ -140,7 +138,6 @@ export default function ContactPage() {
       {/* Hero Section */}
       <div
         className="relative h-96 bg-black overflow-hidden flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
       >
         <div className="absolute inset-0 opacity-20 bg-black"></div>
         <div className="absolute inset-0 opacity-10">
@@ -148,7 +145,7 @@ export default function ContactPage() {
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-400 rounded-full filter blur-3xl"></div>
         </div>
         <div className="relative text-center z-10">
-          <h1 className="Anto-font text-7xl font-bold text-lime-300 italic">
+          <h1 className="text-7xl font-bold text-lime-300 italic">
             Contact
           </h1>
           <p className="anton-font text-5xl font-bold text-white mt-2">
@@ -324,8 +321,8 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Info Cards - Fixed for mobile */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
+          {/* Info Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8">
             {/* Phone */}
             <div className="flex items-start gap-4">
               <a 
@@ -357,90 +354,45 @@ export default function ContactPage() {
             </div>
 
             {/* Address */}
-            {/* Address */}
-<div className="flex items-start gap-4">
-  <a 
-    href="https://maps.app.goo.gl/WWe5QbaddefFKW8D8"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="bg-yellow-300 rounded-full p-3 flex-shrink-0 cursor-pointer hover:bg-yellow-400 transition"
-  >
-    <MapPin className="w-6 h-6 text-black" />
-  </a>
-  <div className="min-w-0 flex-1">
-    <p className="font-bold text-black anton-font">ADDRESS</p>
-    <p className="text-sm text-gray-600 anton-font break-words">
-      7, Sairam street, Jalladampet, Chennai-600100
-    </p>
-  </div>
-</div>
+            <div className="flex items-start gap-4">
+              <a 
+                href="https://maps.app.goo.gl/WWe5QbaddefFKW8D8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-yellow-300 rounded-full p-3 flex-shrink-0 cursor-pointer hover:bg-yellow-400 transition"
+              >
+                <MapPin className="w-6 h-6 text-black" />
+              </a>
+              <div className="min-w-0 flex-1">
+                <p className="font-bold text-black anton-font">ADDRESS</p>
+                <p className="text-sm text-gray-600 anton-font break-words">
+                  7, Sairam street, Jalladampet, Chennai-600100
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="bg-white border-t border-gray-200 px-4 md:px-8 py-16">
+
+      {/* Footer Section */}
+      <div className="bg-white border-t border-gray-200 px-4 md:px-8 py-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-8">
             {/* Left Column */}
-            <div>
-              <p className="text-xs font-bold text-gray-600 mb-2 anton-font">
-                SOURCE
-              </p>
-              <p className="text-xs text-gray-600 mb-4 anton-font">
-                THINKING YOUR DREAMS WITH HUM IDEAS
-              </p>
-              {/* <p className="text-xs font-bold text-black anton-font">© CLICK</p> */}
-            </div>
-
-            {/* Company Column */}
-            {/* <div>
-              <p className="text-xs font-bold text-black mb-4 anton-font">
-                COMPANY
-              </p>
-              <div className="space-y-2">
-                <p className="text-xs text-gray-600 anton-font">HOME</p>
-                <p className="text-xs text-gray-600 anton-font">ABOUT US</p>
-                <p className="text-xs text-gray-600 anton-font">BLOG</p>
-              </div>
-            </div> */}
-
-            {/* Other Pages Column */}
-            {/* <div>
-              <p className="text-xs font-bold text-black mb-4 anton-font">
-                OTHER PAGES
-              </p>
-              <div className="space-y-2">
-                <p className="text-xs text-gray-600 anton-font">PROJECTS</p>
-                <p className="text-xs text-gray-600 anton-font">CAREER</p>
-                <p className="text-xs text-gray-600 anton-font">CONTACT US</p>
-                <p className="text-xs text-gray-600 anton-font">LICENSE</p>
-              </div>
-            </div> */}
-             <div></div>
-             <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            
             {/* Right Column */}
             <div>
-              <div className="flex items-center gap-4 mb-4">
-                {/* <div className="w-10 h-10 rounded-full bg-amber-900 flex-shrink-0"></div> */}
-                <div className="min-w-0">
-                  <p className="text-xs font-bold text-black anton-font">
-                    RICH JOHNSON
-                  </p>
-                  <p className="text-xs font-bold text-orange-500 anton-font">
-                    LEAD DESIGNER & DIRECTION
-                  </p>
-                </div>
-              </div>
-              <p className="text-xs font-bold text-black anton-font">
-                LETS WORK TOGETHER.
-              </p>
+              <div className="flex items-center gap-4 mb-4"></div>
             </div>
           </div>
 
           {/* CTA Button with Hover Animation */}
-          {/* CTA Button with Hover Animation */}
           <div 
             onClick={() => window.location.href = 'mailto:hr@srayssolutions.in'}
-            className="bg-lime-400 rounded-full py-6 px-8 text-center mb-16 flex items-center justify-center gap-3 cursor-pointer transition-all duration-300 group overflow-hidden"
+            className="bg-lime-400 rounded-full py-6 px-8 text-center mb-8 flex items-center justify-center gap-3 cursor-pointer transition-all duration-300 group overflow-hidden"
           >
             <MessageSquare className="w-6 h-6 text-black transition-transform duration-300 group-hover:rotate-12 flex-shrink-0" />
             <div className="relative w-full md:w-[230px] text-xl md:text-2xl font-bold text-black anton-font h-8 flex items-center justify-center">

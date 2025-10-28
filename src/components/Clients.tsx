@@ -97,10 +97,10 @@ export default function ClientsShowcase() {
       <div className="absolute inset-0 bg-black/50 pointer-events-none" />
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-12 lg:py-0">
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 py-8 lg:py-0">
         
         {/* Clients Header */}
-        <div className="text-center pt-20 mb-3 sm:mb-4">
+        <div className="text-center pt-16 mb-2 sm:mb-3">
           <h2
             className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tight"
             style={{
@@ -116,7 +116,7 @@ export default function ClientsShowcase() {
         </div>
 
         {/* Subheader */}
-        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+        <div className="text-center mb-8 sm:mb-10 lg:mb-12">
           <h3
             className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-widest text-blue-400"
             style={{
@@ -128,7 +128,7 @@ export default function ClientsShowcase() {
         </div>
 
         {/* Desktop Layout - Central Section with 3D Cube and Cards */}
-        <div className="hidden lg:flex relative w-full max-w-7xl h-screen items-center justify-center">
+        <div className="hidden lg:flex relative w-full max-w-7xl h-[70vh] items-center justify-center">
           
           {/* Floating 3D Cube */}
           <div
@@ -144,7 +144,7 @@ export default function ClientsShowcase() {
               src="https://cdn.prod.website-files.com/6847119f22b5391772dbf625/6847119f22b5391772dbf6bf_about%20box.webp" 
               loading="lazy" 
               alt="3D Cube" 
-              className="success-main-image w-48 h-48 object-contain" 
+              className="success-main-image w-40 h-40 object-contain" 
               style={{ 
                 transform: 'translate3d(0px, 10px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)', 
                 transformStyle: 'preserve-3d', 
@@ -155,20 +155,20 @@ export default function ClientsShowcase() {
 
           {/* Client 1 Card - Top Right */}
           <div
-            className="absolute top-12 right-12 w-96"
+            className="absolute top-8 right-8 w-80"
             style={{
               animation: isVisible ? 'slideInRight 1s ease-out 0.4s both' : 'none',
               transform: `translateY(${scrollY * 0.15}px)`
             }}
           >
-            <div className="bg-white/95 backdrop-blur-md text-black p-8 rounded-2xl shadow-2xl border border-gray-200 client-card-hover-effect">
-              <div className="mb-4">
+            <div className="bg-white/95 backdrop-blur-md text-black p-6 rounded-2xl shadow-2xl border border-gray-200 client-card-hover-effect">
+              <div className="mb-3">
                 <span className="text-sm font-bold text-teal-600">Client 01</span>
               </div>
-              <h3 className="text-2xl font-black tracking-wide mb-4">
+              <h3 className="text-xl font-black tracking-wide mb-3">
                 {clients[0].name}
               </h3>
-              <div className="w-full h-48 rounded-lg overflow-hidden mb-4 bg-gray-200">
+              <div className="w-full h-40 rounded-lg overflow-hidden mb-3 bg-gray-200">
                 <div
                   style={{
                     width: '100%',
@@ -180,7 +180,7 @@ export default function ClientsShowcase() {
                   }}
                 />
               </div>
-              <p className="text-sm leading-relaxed text-gray-600">
+              <p className="text-xs leading-relaxed text-gray-600">
                 Leading educational institution dedicated to delivering excellence in academics and digital transformation.
               </p>
             </div>
@@ -188,20 +188,20 @@ export default function ClientsShowcase() {
 
           {/* Client 2 Card - Bottom Left */}
           <div
-            className="absolute bottom-12 left-12 w-96"
+            className="absolute bottom-8 left-8 w-80"
             style={{
               animation: isVisible ? 'slideInLeft 1s ease-out 0.6s both' : 'none',
               transform: `translateY(${scrollY * 0.2}px)`
             }}
           >
-            <div className="bg-white/95 backdrop-blur-md text-black p-8 rounded-2xl shadow-2xl border border-gray-200 client-card-hover-effect">
-              <div className="mb-4">
+            <div className="bg-white/95 backdrop-blur-md text-black p-6 rounded-2xl shadow-2xl border border-gray-200 client-card-hover-effect">
+              <div className="mb-3">
                 <span className="text-sm font-bold text-purple-600">Client 02</span>
               </div>
-              <h3 className="text-2xl font-black tracking-wide mb-4">
+              <h3 className="text-xl font-black tracking-wide mb-3">
                 {clients[1].name}
               </h3>
-              <div className="w-full h-48 rounded-lg overflow-hidden mb-4 bg-gray-200">
+              <div className="w-full h-40 rounded-lg overflow-hidden mb-3 bg-gray-200">
                 <div
                   style={{
                     width: '100%',
@@ -213,7 +213,7 @@ export default function ClientsShowcase() {
                   }}
                 />
               </div>
-              <p className="text-sm leading-relaxed text-gray-600">
+              <p className="text-xs leading-relaxed text-gray-600">
                 Premier educational group fostering innovation and excellence in higher education globally.
               </p>
             </div>
@@ -230,10 +230,10 @@ export default function ClientsShowcase() {
         </div>
 
         {/* Mobile & Tablet Layout - Swiper */}
-        <div className="lg:hidden w-full max-w-2xl pb-12">
+        <div className="lg:hidden w-full max-w-2xl pb-8">
           
           {/* Floating 3D Cube - Mobile */}
-          <div className="flex justify-center mb-6 sm:mb-8">
+          <div className="flex justify-center mb-4 sm:mb-6">
             <div
               style={{
                 perspective: '1200px',
@@ -244,7 +244,7 @@ export default function ClientsShowcase() {
                 src="https://cdn.prod.website-files.com/6847119f22b5391772dbf625/6847119f22b5391772dbf6bf_about%20box.webp" 
                 loading="lazy" 
                 alt="3D Cube" 
-                className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
+                className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 object-contain"
                 style={{ 
                   transform: 'translate3d(0px, 10px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)', 
                   transformStyle: 'preserve-3d', 
@@ -270,18 +270,18 @@ export default function ClientsShowcase() {
               {clients.map((client, index) => (
                 <div
                   key={index}
-                  className="w-full flex-shrink-0 px-4"
+                  className="w-full flex-shrink-0 px-3"
                 >
-                  <div className="bg-white/95 backdrop-blur-md text-black p-5 sm:p-6 md:p-8 rounded-2xl shadow-2xl border border-gray-200 client-card-hover-effect">
-                    <div className="mb-3 sm:mb-4">
+                  <div className="bg-white/95 backdrop-blur-md text-black p-4 sm:p-5 md:p-6 rounded-2xl shadow-2xl border border-gray-200 client-card-hover-effect">
+                    <div className="mb-2 sm:mb-3">
                       <span className={`text-xs sm:text-sm font-bold ${index === 0 ? 'text-teal-600' : 'text-purple-600'}`}>
                         Client 0{index + 1}
                       </span>
                     </div>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-black tracking-wide mb-3 sm:mb-4">
+                    <h3 className="text-base sm:text-lg md:text-xl font-black tracking-wide mb-2 sm:mb-3">
                       {client.name}
                     </h3>
-                    <div className="w-full h-40 sm:h-48 md:h-56 rounded-lg overflow-hidden mb-3 sm:mb-4 bg-gray-200">
+                    <div className="w-full h-32 sm:h-40 md:h-48 rounded-lg overflow-hidden mb-2 sm:mb-3 bg-gray-200">
                       <div
                         style={{
                           width: '100%',
@@ -293,7 +293,7 @@ export default function ClientsShowcase() {
                         }}
                       />
                     </div>
-                    <p className="text-xs sm:text-sm leading-relaxed text-gray-600">
+                    <p className="text-xs leading-relaxed text-gray-600">
                       {index === 0 
                         ? 'Leading educational institution dedicated to delivering excellence in academics and digital transformation.'
                         : 'Premier educational group fostering innovation and excellence in higher education globally.'
@@ -306,7 +306,7 @@ export default function ClientsShowcase() {
           </div>
 
           {/* Pagination Dots */}
-          <div className="flex justify-center gap-2 mt-6">
+          <div className="flex justify-center gap-2 mt-4">
             {clients.map((_, index) => (
               <button
                 key={index}

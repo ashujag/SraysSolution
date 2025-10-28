@@ -304,16 +304,16 @@ const SkillSection = () => {
           GET IMPROVE IN<br />YOUR HR PROCESS
         </div>
         <div className="office-badge" style={styles.officeBadge}>
-          <div style={styles.badgeContent}>
+          {/* <div style={styles.badgeContent}>
             <span style={styles.bullet}>●</span> HRMS Services
-          </div>
-          <div style={styles.badgeImage}>
+          </div> */}
+          {/* <div style={styles.badgeImage}>
             <img 
               src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=100&h=100&fit=crop" 
               alt="HR Team"
               style={styles.badgeImg}
             />
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -439,9 +439,8 @@ const SkillSection = () => {
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     width: '100%',
-    minHeight: '100vh',
     background: '#c8f346',
-    padding: 'clamp(15px, 4vw, 40px)',
+    padding: 'clamp(10px, 3vw, 25px)',
     fontFamily: 'Anton, sans-serif',
     position: 'relative',
     overflow: 'hidden',
@@ -452,8 +451,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginBottom: 'clamp(20px, 8vw, 60px)',
-    gap: 'clamp(15px, 4vw, 40px)',
+    marginBottom: 'clamp(20px, 6vw, 40px)',
+    gap: 'clamp(10px, 3vw, 25px)',
   },
   topCities: {
     fontFamily: 'Anton, sans-serif',
@@ -517,17 +516,17 @@ const styles: { [key: string]: React.CSSProperties } = {
     gridTemplateRows: 'auto auto auto',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 'clamp(20px, 5vw, 40px)',
-    marginBottom: 'clamp(20px, 6vw, 40px)',
+    gap: 'clamp(15px, 4vw, 25px)',
+    marginBottom: 'clamp(15px, 3vw, 20px)',
     maxWidth: '1400px',
-    margin: '0 auto clamp(20px, 6vw, 40px) auto',
+    margin: '0 auto clamp(15px, 3vw, 20px) auto',
   },
   teamSection: {
     textAlign: 'center',
   },
   teamNumber: {
     fontFamily: 'Anton, sans-serif',
-    fontSize: 'clamp(50px, 14vw, 110px)',
+    fontSize: 'clamp(40px, 12vw, 90px)',
     fontWeight: '400',
     color: '#1a1a1a',
     lineHeight: '1',
@@ -548,8 +547,8 @@ const styles: { [key: string]: React.CSSProperties } = {
   imageSection: {
     background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 200, 200, 0.3) 100%)',
     borderRadius: '60% 40% 70% 30% / 50% 60% 40% 50%',
-    padding: 'clamp(15px, 4vw, 50px)',
-    marginBottom: 'clamp(-20px, -6vw, -50px)',
+    padding: 'clamp(8px, 2.5vw, 20px)',
+    marginBottom: 'clamp(-8px, -2.5vw, -20px)',
     position: 'relative',
     zIndex: 2,
   },
@@ -563,9 +562,9 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   progressOverlay: {
     position: 'absolute',
-    bottom: 'clamp(30px, 8vw, 70px)',
-    left: 'clamp(30px, 8vw, 70px)',
-    right: 'clamp(30px, 8vw, 70px)',
+    bottom: 'clamp(15px, 4vw, 30px)',
+    left: 'clamp(15px, 4vw, 30px)',
+    right: 'clamp(15px, 4vw, 30px)',
   },
   progressBarContainer: {
     width: '100%',
@@ -583,7 +582,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   cardContent: {
     background: '#1a3a2a',
-    padding: 'clamp(20px, 5vw, 40px)',
+    padding: 'clamp(10px, 3vw, 20px)',
     borderRadius: '12px',
     position: 'relative',
     zIndex: 1,
@@ -619,7 +618,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   statsNumber: {
     fontFamily: 'Anton, sans-serif',
-    fontSize: 'clamp(60px, 16vw, 140px)',
+    fontSize: 'clamp(50px, 14vw, 110px)',
     fontWeight: '400',
     color: '#1a1a1a',
     lineHeight: '1',
@@ -634,7 +633,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   descriptionSection: {
     maxWidth: '800px',
-    margin: '0 auto clamp(20px, 5vw, 30px) auto',
+    margin: '0 auto clamp(10px, 3vw, 15px) auto',
     textAlign: 'center',
     padding: '0 clamp(10px, 3vw, 20px)',
   },
@@ -651,7 +650,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontWeight: '400',
     color: '#1a1a1a',
     textAlign: 'center',
-    marginBottom: 'clamp(20px, 6vw, 40px)',
+    marginBottom: 'clamp(10px, 3vw, 15px)',
     letterSpacing: '0.5px',
     padding: '0 clamp(10px, 3vw, 20px)',
     wordBreak: 'break-word',
@@ -660,7 +659,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: 'flex',
     gap: 'clamp(15px, 4vw, 20px)',
     justifyContent: 'center',
-    marginBottom: 'clamp(20px, 6vw, 40px)',
+    marginBottom: 'clamp(10px, 3vw, 15px)',
     touchAction: 'manipulation',
   },
   navButton: {
@@ -683,12 +682,12 @@ const styles: { [key: string]: React.CSSProperties } = {
   ctaSection: {
     display: 'flex',
     justifyContent: 'center',
-    marginBottom: 'clamp(60px, 10vw, 80px)',
+    marginBottom: 'clamp(30px, 6vw, 40px)',
     padding: '0 clamp(10px, 3vw, 20px)',
   },
   ctaCard: {
     background: 'rgba(26, 58, 42, 0.9)',
-    padding: 'clamp(20px, 5vw, 50px)',
+    padding: 'clamp(10px, 3vw, 20px)',
     borderRadius: '20px',
     maxWidth: '600px',
     width: '100%',
