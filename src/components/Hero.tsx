@@ -321,7 +321,7 @@
 // export default HeroSection;
 
 import React, { useEffect, useRef, useState, type UIEvent, type ReactNode, type MouseEventHandler } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import logoheader from '../assets/logoheader.png';
 import heroBackgroundImage from '../assets/6847119f22b5391772dbf625_684efaff0f6e64c09d96d807_freepik__animate-this-with-8k-loop__54302-poster-00001.jpg';
 
@@ -689,12 +689,12 @@ const HeroSection: React.FC = () => {
           </div>
         )}
 
-        {/* Menu Button */}
+        {/* Menu Button - Only shows hamburger icon */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="menu-button w-10 h-10 md:w-12 md:h-12 bg-lime-400 text-black rounded-full flex items-center justify-center hover:bg-lime-300 transition-all duration-300 shadow-lg flex-shrink-0"
         >
-          {isMenuOpen ? <X size={20} className="md:w-6 md:h-6" /> : <Menu size={20} className="md:w-6 md:h-6" />}
+          <Menu size={20} className="md:w-6 md:h-6" />
         </button>
       </div>
 

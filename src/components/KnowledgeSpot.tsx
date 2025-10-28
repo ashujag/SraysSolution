@@ -20,6 +20,8 @@ const KnowledgeSpot = () => {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const autoSlideInterval = useRef<number | null>(null);
+  const playerRefs = useRef<{ [key: string]: any }>({});
+  const [isYouTubeAPIReady, setIsYouTubeAPIReady] = useState(false);
 
   const knowledgeItems: KnowledgeItem[] = [
     {
@@ -53,6 +55,76 @@ const KnowledgeSpot = () => {
       type: "video",
     },
   ];
+
+  // Load YouTube IFrame API
+  useEffect(() => {
+    // Check if API is already loaded
+    if (window.YT && window.YT.Player) {
+      setIsYouTubeAPIReady(true);
+      return;
+    }
+
+    // Load the API
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+
+    // API ready callback
+    window.onYouTubeIframeAPIReady = () => {
+      setIsYouTubeAPIReady(true);
+    };
+
+    return () => {
+      window.onYouTubeIframeAPIReady = undefined;
+    };
+  }, []);
+
+  // Initialize YouTube Players when video is selected
+  useEffect(() => {
+    if (!selectedVideoId || !isYouTubeAPIReady) return;
+
+    const initPlayer = () => {
+      const iframeId = `youtube-player-${selectedVideoId}`;
+      const iframeElement = document.getElementById(iframeId);
+
+      if (iframeElement && window.YT && window.YT.Player) {
+        try {
+          // Destroy existing player if it exists
+          if (playerRefs.current[selectedVideoId]) {
+            playerRefs.current[selectedVideoId].destroy();
+          }
+
+          // Create new player
+          playerRefs.current[selectedVideoId] = new window.YT.Player(iframeId, {
+            videoId: selectedVideoId,
+            playerVars: {
+              autoplay: 1,
+              controls: 1,
+              modestbranding: 1,
+              rel: 0,
+              showinfo: 0,
+              enablejsapi: 1,
+            },
+            events: {
+              onReady: (event: any) => {
+                event.target.playVideo();
+              },
+            },
+          });
+        } catch (error) {
+          console.error('Error initializing YouTube player:', error);
+        }
+      }
+    };
+
+    // Small delay to ensure iframe is in DOM
+    const timer = setTimeout(initPlayer, 100);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [selectedVideoId, isYouTubeAPIReady]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -140,39 +212,53 @@ const KnowledgeSpot = () => {
     setTouchEnd(0);
   };
 
-  const toggleVideo = (videoId: string) => {
-    // Stop all videos before toggling by using YouTube API
-    const iframes = document.querySelectorAll('iframe');
-    iframes.forEach((iframe) => {
-      try {
-        iframe.contentWindow?.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
-      } catch (e) {
-        // Fallback: reset src if postMessage fails
-        const src = iframe.src;
-        iframe.src = '';
-        iframe.src = src.replace('autoplay=1', 'autoplay=0');
+  const stopAllVideos = () => {
+    // Stop all YouTube players using the API
+    Object.keys(playerRefs.current).forEach((videoId) => {
+      const player = playerRefs.current[videoId];
+      if (player && typeof player.stopVideo === 'function') {
+        try {
+          player.stopVideo();
+        } catch (error) {
+          console.error('Error stopping video:', error);
+        }
       }
     });
+  };
+
+  const toggleVideo = (videoId: string) => {
+    // Stop all currently playing videos
+    stopAllVideos();
     
+    // Toggle the selected video
     setSelectedVideoId((prev) => (prev === videoId ? null : videoId));
   };
 
   const closeVideo = () => {
-    // Stop all videos when closing using YouTube API
-    const iframes = document.querySelectorAll('iframe');
-    iframes.forEach((iframe) => {
-      try {
-        iframe.contentWindow?.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
-      } catch (e) {
-        // Fallback: reset src if postMessage fails
-        const src = iframe.src;
-        iframe.src = '';
-        iframe.src = src.replace('autoplay=1', 'autoplay=0');
-      }
-    });
+    // Stop the current video
+    stopAllVideos();
     
+    // Close the video player
     setSelectedVideoId(null);
   };
+
+  // Cleanup players on unmount
+  useEffect(() => {
+    return () => {
+      stopAllVideos();
+      Object.keys(playerRefs.current).forEach((videoId) => {
+        const player = playerRefs.current[videoId];
+        if (player && typeof player.destroy === 'function') {
+          try {
+            player.destroy();
+          } catch (error) {
+            console.error('Error destroying player:', error);
+          }
+        }
+      });
+      playerRefs.current = {};
+    };
+  }, []);
 
   return (
     <div
@@ -293,25 +379,23 @@ const KnowledgeSpot = () => {
               <div className="relative overflow-hidden rounded-lg mb-4 aspect-video shadow-lg hover:shadow-2xl transition-shadow duration-300">
                 {selectedVideoId === item.videoId ? (
                   <div className="relative w-full h-full">
-                    {/* Close Button */}
+                    {/* Close Button - Positioned outside video player area */}
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         closeVideo();
                       }}
-                      className="absolute top-2 right-2 bg-black/60 hover:bg-black text-white rounded-full p-1 transition z-10"
+                      className="absolute -top-10 right-0 bg-red-600 hover:bg-red-700 text-white rounded-full p-2 transition z-10 shadow-lg"
+                      title="Close video"
                     >
                       <X size={20} />
                     </button>
 
-                    {/* Embedded Video */}
-                    <iframe
+                    {/* YouTube Player Container */}
+                    <div
+                      id={`youtube-player-${item.videoId}`}
                       className="absolute inset-0 w-full h-full rounded-lg"
-                      src={`https://www.youtube.com/embed/${item.videoId}?autoplay=1&enablejsapi=1&controls=1&modestbranding=1&rel=0&showinfo=0`}
-                      title={item.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
+                    ></div>
                   </div>
                 ) : (
                   <>
@@ -379,25 +463,23 @@ const KnowledgeSpot = () => {
                     <div className="relative overflow-hidden rounded-lg mb-4 aspect-video shadow-lg">
                       {selectedVideoId === item.videoId ? (
                         <div className="relative w-full h-full">
-                          {/* Close Button */}
+                          {/* Close Button - Positioned outside video player area */}
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
                               closeVideo();
                             }}
-                            className="absolute top-2 right-2 bg-black/60 hover:bg-black text-white rounded-full p-1 transition z-10"
+                            className="absolute -top-10 right-0 bg-red-600 hover:bg-red-700 text-white rounded-full p-2 transition z-10 shadow-lg"
+                            title="Close video"
                           >
                             <X size={20} />
                           </button>
 
-                          {/* Embedded Video */}
-                          <iframe
+                          {/* YouTube Player Container */}
+                          <div
+                            id={`youtube-player-${item.videoId}`}
                             className="absolute inset-0 w-full h-full rounded-lg"
-                            src={`https://www.youtube.com/embed/${item.videoId}?autoplay=1&enablejsapi=1&controls=1&modestbranding=1&rel=0&showinfo=0`}
-                            title={item.title}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          ></iframe>
+                          ></div>
                         </div>
                       ) : (
                         <>
@@ -464,5 +546,13 @@ const KnowledgeSpot = () => {
     </div>
   );
 };
+
+// TypeScript declarations for YouTube API
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady: (() => void) | undefined;
+  }
+}
 
 export default KnowledgeSpot;
