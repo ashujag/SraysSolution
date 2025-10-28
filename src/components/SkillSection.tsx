@@ -416,9 +416,9 @@ const SkillSection = () => {
          <button
             style={styles.ctaButton}
             onClick={() => {
-              const homeSection = document.getElementById("home");
-              if (homeSection) {
-                homeSection.scrollIntoView({ behavior: "smooth" });
+              const contactSection = document.getElementById("contact");
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth" });
               }
             }}
             aria-label="Get SRays HRMS"

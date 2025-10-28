@@ -51,8 +51,10 @@ export default function ContactPage() {
 
     if (!formData.email.trim()) {
       newErrors.email = "Please enter your email";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
       newErrors.email = "Email is invalid";
+    } else if (!formData.email.includes("@gmail.com")) {
+      newErrors.email = "Only Gmail addresses are allowed";
     }
 
     if (!formData.company.trim()) {
@@ -314,7 +316,12 @@ export default function ContactPage() {
             <div className="mb-16">
               <button
                 onClick={handleSubmit}
-                className="bg-lime-400 text-black font-bold px-8 py-3 rounded-full hover:bg-lime-500 transition anton-font"
+                disabled={!Object.keys(errors).every(key => !errors[key]) && !formData.email.includes("@gmail.com")}
+                className={`bg-lime-400 text-black font-bold px-8 py-3 rounded-full transition anton-font ${
+                  !Object.keys(errors).every(key => !errors[key]) && !formData.email.includes("@gmail.com")
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:bg-lime-500"
+                }`}
               >
                 SUBMIT NOW
               </button>
@@ -375,7 +382,7 @@ export default function ContactPage() {
       </div>
 
       {/* Footer Section */}
-      <div className="bg-white border-t border-gray-200 px-4 md:px-8 py-8">
+      <div className="bg-white px-4 md:px-8 py-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-8">
             {/* Left Column */}
@@ -408,7 +415,7 @@ export default function ContactPage() {
           </div>
 
           {/* Newsletter */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 border-t border-gray-200 pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 pt-8">
             <div>
               <p className="text-xs font-bold text-black mb-2 anton-font">
                 SUBSCRIBE TO OUR NEWSLETTER
