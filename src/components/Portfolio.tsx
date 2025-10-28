@@ -148,7 +148,7 @@ const Portfolio = () => {
           <div className="text-center mb-16 slide-in">
             <h2 className="inline-block">
               <span 
-                className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#c8f346] inline-block floating"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#c8f346] inline-block floating"
                 style={{ 
                   fontFamily: 'Anton, sans-serif',
                   fontWeight: 400
@@ -158,7 +158,7 @@ const Portfolio = () => {
               </span>
             </h2>
             <h3 
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl uppercase text-[#2c3e50] mt-2"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase text-[#2c3e50] mt-2"
               style={{ 
                 fontFamily: 'Anton, sans-serif',
                 fontWeight: 400,
@@ -185,7 +185,7 @@ const Portfolio = () => {
                       key={currentSlide}
                       src={testimonials[currentSlide].image}
                       alt={`testimonial-${currentSlide + 1}`}
-                      className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out transform hover:scale-110 slide-in"
+                      className="absolute inset-0 w-full h-full object-contain transition-all duration-1000 ease-out transform hover:scale-110 slide-in"
                     />
                   </div>
                   

@@ -174,7 +174,8 @@ export default function ClientsShowcase() {
                     width: '100%',
                     height: '100%',
                     backgroundImage: `url('${ksreiImage}')`,
-                    backgroundSize: 'cover',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center'
                   }}
                 />
@@ -206,7 +207,8 @@ export default function ClientsShowcase() {
                     width: '100%',
                     height: '100%',
                     backgroundImage: `url('${sairamgroupImage}')`,
-                    backgroundSize: 'cover',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center'
                   }}
                 />
@@ -285,7 +287,8 @@ export default function ClientsShowcase() {
                           width: '100%',
                           height: '100%',
                           backgroundImage: `url('${client.image}')`,
-                          backgroundSize: 'cover',
+                          backgroundSize: 'contain',
+                          backgroundRepeat: 'no-repeat',
                           backgroundPosition: 'center'
                         }}
                       />

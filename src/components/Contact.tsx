@@ -34,20 +34,47 @@ export default function ContactPage() {
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
-    if (!formData.firstName.trim())
+    if (!formData.firstName.trim()) {
       newErrors.firstName = "Please enter your first name";
-    if (!formData.lastName.trim())
+    } else if (!/^[a-zA-Z]+$/.test(formData.firstName)) {
+      newErrors.firstName = "First name should contain only alphabets";
+    }
+
+    if (!formData.lastName.trim()) {
       newErrors.lastName = "Please enter your last name";
-    if (!formData.contact.trim())
+    } else if (!/^[a-zA-Z]+$/.test(formData.lastName)) {
+      newErrors.lastName = "Last name should contain only alphabets";
+    }
+
+    if (!formData.contact.trim()) {
       newErrors.contact = "Please enter your contact number";
-    if (!formData.email.trim()) newErrors.email = "Please enter your email";
-    else if (!/\S+@\S+\.\S+/.test(formData.email))
+    } else if (!/^[0-9]+$/.test(formData.contact)) {
+      newErrors.contact = "Contact number should contain only numbers";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Please enter your email";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email is invalid";
-    if (!formData.company.trim())
+    }
+
+    if (!formData.company.trim()) {
       newErrors.company = "Please enter your company name";
-    if (!formData.subject.trim()) newErrors.subject = "Please enter a subject";
-    if (!formData.message.trim())
+    } else if (!/^[a-zA-Z0-9\s.,!?&'-]+$/.test(formData.company)) {
+      newErrors.company = "Company name should contain only words and common punctuation";
+    }
+
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Please enter a subject";
+    } else if (!/^[a-zA-Z0-9\s.,!?&'-]+$/.test(formData.subject)) {
+      newErrors.subject = "Subject should contain only words and common punctuation";
+    }
+
+    if (!formData.message.trim()) {
       newErrors.message = "Please enter your message";
+    } else if (!/^[a-zA-Z0-9\s.,!?&'-]+$/.test(formData.message)) {
+      newErrors.message = "Message should contain only words and common punctuation";
+    }
 
     setErrors(newErrors);
 
@@ -125,7 +152,7 @@ export default function ContactPage() {
             Contact
           </h1>
           <p className="anton-font text-5xl font-bold text-white mt-2">
-            LETS TALK
+            LET'S TALK
           </p>
         </div>
       </div>

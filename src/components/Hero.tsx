@@ -571,6 +571,22 @@ const HeroSection: React.FC = () => {
     }
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isMenuOpen]);
+
   const handleMenuItemSelect = (item: string, index: number) => {
     setIsMenuOpen(false);
     setSelectedMenuIndex(index);

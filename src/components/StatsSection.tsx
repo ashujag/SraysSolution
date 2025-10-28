@@ -120,7 +120,7 @@ const StatsSection = () => {
                 </h2>
               </div>
               <h3 
-                className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl uppercase leading-tight mb-6 text-[#2c3e50] ${isVisible ? 'slide-up slide-up-delay-1' : ''}`}
+                className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-tight mb-6 text-[#2c3e50] ${isVisible ? 'slide-up slide-up-delay-1' : ''}`}
                 style={{ 
                   fontFamily: 'Anton, sans-serif',
                   fontWeight: 400,
@@ -149,11 +149,11 @@ const StatsSection = () => {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 flex-1">
-                  <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+                  <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
                     <NumberRoller digits={[2, 3, 0]} suffix="+" />
                   </div>
                   <span 
-                    className="text-base sm:text-lg md:text-xl lg:text-2xl uppercase leading-tight text-[#2c3e50]"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight text-[#2c3e50]"
                     style={{ 
                       fontFamily: 'Anton, sans-serif',
                       fontWeight: 400,
@@ -177,7 +177,7 @@ const StatsSection = () => {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 flex-1">
-                  <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl flex items-baseline" style={{ fontFamily: 'Anton, sans-serif' }}>
+                  <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl flex items-baseline" style={{ fontFamily: 'Anton, sans-serif' }}>
                     <span className="font-black text-[#2c3e50]">$</span>
                     <NumberRoller digits={[1]} />
                     <span className="font-black text-[#2c3e50]">.</span>
@@ -185,7 +185,7 @@ const StatsSection = () => {
                     <span className="font-black text-[#2c3e50]">B+</span>
                   </div>
                   <span 
-                    className="text-base sm:text-lg md:text-xl lg:text-2xl uppercase leading-tight text-[#2c3e50]"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight text-[#2c3e50]"
                     style={{ 
                       fontFamily: 'Anton, sans-serif',
                       fontWeight: 400,
@@ -209,11 +209,11 @@ const StatsSection = () => {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 flex-1">
-                  <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+                  <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
                     <NumberRoller digits={[8, 5, 6]} suffix="+" />
                   </div>
                   <span 
-                    className="text-base sm:text-lg md:text-xl lg:text-2xl uppercase leading-tight text-[#2c3e50]"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight text-[#2c3e50]"
                     style={{ 
                       fontFamily: 'Anton, sans-serif',
                       fontWeight: 400,
@@ -237,11 +237,11 @@ const StatsSection = () => {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 flex-1">
-                  <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+                  <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
                     <NumberRoller digits={[2, 8]} suffix="%" />
                   </div>
                   <span 
-                    className="text-base sm:text-lg md:text-xl lg:text-2xl uppercase leading-tight text-[#2c3e50]"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight text-[#2c3e50]"
                     style={{ 
                       fontFamily: 'Anton, sans-serif',
                       fontWeight: 400,

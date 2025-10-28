@@ -76,9 +76,9 @@ const ServiceMenu = () => {
     <>
       <div id="services" className="min-h-screen bg-white flex items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-7xl">
-          <div className="mb-8 md:mb-12">
+          {/* <div className="mb-8 md:mb-12">
             <h2 className="text-base md:text-xl font-bold tracking-wider">BUSINESS SERVICE</h2>
-          </div>
+          </div> */}
 
           <div className="space-y-0">
             {services.map((service) => (
@@ -90,14 +90,14 @@ const ServiceMenu = () => {
                 onMouseEnter={() => setHoveredItem(service.id)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
-                <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-16 flex-1 w-full">
+                <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-16 flex-1 w-full">
                   <span className="text-lg md:text-xl font-bold flex-shrink-0">{service.number}</span>
-                  <h3 className="text-2xl md:text-7xl font-black tracking-tight break-words md:whitespace-nowrap">{service.title}</h3>
+                  <h3 className="text-2xl md:text-5xl font-black tracking-tight break-words md:whitespace-nowrap">{service.title}</h3>
                 </div>
 
                 {/* Image container - shows on hover for desktop, clickable on mobile */}
                 {hoveredItem === service.id && (
-                  <div className="absolute left-1/2 top-1/2 -translate-y-1/2 z-10 animate-in fade-in zoom-in-95 duration-300 hidden md:block">
+                  <div className="absolute left-1/2 top-1/2 -translate-y-1/2 z-0 animate-in fade-in zoom-in-95 duration-300 hidden md:block">
                     <div className="w-[300px] lg:w-[500px] h-[200px] lg:h-[330px] rounded-lg shadow-2xl overflow-hidden">
                       <img 
                         src={service.image}

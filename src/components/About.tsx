@@ -140,7 +140,7 @@ const AboutUs = () => {
       <div className="absolute top-0 left-0 w-32 md:w-64 h-32 md:h-64 bg-blue-500 rounded-full filter blur-3xl opacity-30"></div>
       <div className="absolute bottom-0 left-0 w-32 md:w-64 h-32 md:h-64 bg-cyan-400 rounded-full filter blur-3xl opacity-30"></div>
       
-      <div className="max-w-6xl mx-auto relative w-full px-4 md:px-8">
+      <div className="max-w-7xl mx-auto relative w-full px-4 md:px-8">
         {/* Logo */}
         <div className="mb-4 md:mb-6 flex justify-center lg:justify-start">
           <div className="flex items-center gap-2">
@@ -151,7 +151,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 items-center justify-center">
           {/* Left Content */}
           <div className="pt-2 md:pt-4 text-center lg:text-left">
             <h1 className="text-2xl md:text-4xl font-bold leading-tight mb-3" style={{ fontFamily: 'Anton, sans-serif' }}>
@@ -169,9 +169,9 @@ const AboutUs = () => {
           </div>
 
           {/* Right Content - Service Cards */}
-          <div className="relative flex justify-center lg:justify-start items-center">
+          <div className="relative flex justify-center lg:justify-end items-center lg:ml-8">
             {/* Card Stack - Desktop Layout */}
-            <div className="hidden lg:block relative" style={{ height: '380px', width: '340px' }}>
+            <div className="hidden lg:block relative" style={{ height: '380px', width: '400px' }}>
               {/* Website Development Card - Blue - Top Left */}
               <div 
                 className={`card-hover absolute bg-blue-600 text-white p-4 rounded-xl shadow-lg cursor-pointer ${
@@ -180,16 +180,16 @@ const AboutUs = () => {
                 style={{ 
                   top: '0px', 
                   left: '0px', 
-                  width: '160px', 
-                  height: '90px',
+                  width: '180px', 
+                  height: '100px',
                   zIndex: 4
                 }}
                 onMouseEnter={() => setHoveredCard('website')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <Monitor className="w-8 h-8 mb-1" />
-                  <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Website Development</p>
+                  <Monitor className="w-10 h-10 mb-2" />
+                  <p className="text-sm font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Website Development</p>
                 </div>
               </div>
 
@@ -200,37 +200,37 @@ const AboutUs = () => {
                 }`}
                 style={{ 
                   top: '0px', 
-                  left: '170px', 
-                  width: '160px', 
-                  height: '90px',
+                  left: '200px', 
+                  width: '180px', 
+                  height: '100px',
                   zIndex: 4
                 }}
                 onMouseEnter={() => setHoveredCard('mobile')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <Smartphone className="w-8 h-8 mb-1" />
-                  <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Mobile App Development</p>
+                  <Smartphone className="w-10 h-10 mb-2" />
+                  <p className="text-sm font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Mobile App Development</p>
                 </div>
               </div>
 
               {/* Management Card - White - Left Side Below */}
               <div 
-                className={`card-hover absolute bg-white p-5 rounded-xl shadow-2xl border border-gray-100 cursor-pointer ${
+                className={`card-hover absolute bg-white p-6 rounded-xl shadow-2xl border border-gray-100 cursor-pointer ${
                   hoveredCard === 'management' ? 'highlight-glow' : ''
                 }`}
                 style={{ 
-                  top: '100px', 
+                  top: '110px', 
                   left: '0px', 
-                  width: '240px', 
-                  height: '180px',
+                  width: '270px', 
+                  height: '200px',
                   zIndex: 3
                 }}
                 onMouseEnter={() => setHoveredCard('management')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                <h2 className="text-6xl font-bold text-gray-900 mb-2 leading-none" style={{ fontFamily: 'Anton, sans-serif' }}>01.</h2>
-                <h3 className="text-base font-bold text-blue-600 mb-1" style={{ fontFamily: 'Anton, sans-serif' }}>Management</h3>
+                <h2 className="text-7xl font-bold text-gray-900 mb-3 leading-none" style={{ fontFamily: 'Anton, sans-serif' }}>01.</h2>
+                <h3 className="text-lg font-bold text-blue-600 mb-2" style={{ fontFamily: 'Anton, sans-serif' }}>Management</h3>
                 <p className="text-gray-500 text-xs leading-relaxed" style={{ fontFamily: 'Anton, sans-serif' }}>
                 
                 </p>
@@ -242,18 +242,18 @@ const AboutUs = () => {
                   hoveredCard === 'logo' ? 'highlight-glow' : ''
                 }`}
                 style={{ 
-                  top: '100px', 
-                  left: '170px', 
-                  width: '160px', 
-                  height: '90px',
+                  top: '110px', 
+                  left: '200px', 
+                  width: '180px', 
+                  height: '100px',
                   zIndex: 4
                 }}
                 onMouseEnter={() => setHoveredCard('logo')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <Palette className="w-8 h-8 mb-1" />
-                  <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Logo & Branding</p>
+                  <Palette className="w-10 h-10 mb-2" />
+                  <p className="text-sm font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Logo & Branding</p>
                 </div>
               </div>
 
@@ -263,18 +263,18 @@ const AboutUs = () => {
                   hoveredCard === 'strategy' ? 'highlight-glow' : ''
                 }`}
                 style={{ 
-                  top: '200px', 
-                  left: '170px', 
-                  width: '160px', 
-                  height: '90px',
+                  top: '220px', 
+                  left: '200px', 
+                  width: '180px', 
+                  height: '100px',
                   zIndex: 4
                 }}
                 onMouseEnter={() => setHoveredCard('strategy')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="flex flex-col items-center justify-center h-full">
-                  <TrendingUp className="w-8 h-8 mb-1" />
-                  <p className="text-xs font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Digital Strategy</p>
+                  <TrendingUp className="w-10 h-10 mb-2" />
+                  <p className="text-sm font-bold text-center leading-tight" style={{ fontFamily: 'Anton, sans-serif' }}>Digital Strategy</p>
                 </div>
               </div>
             </div>
